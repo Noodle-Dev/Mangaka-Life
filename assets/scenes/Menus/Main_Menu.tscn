@@ -14,9 +14,11 @@ offset_bottom = 960.0
 
 [node name="Manga_Bg" type="ColorRect" parent="Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_right = 2.13378
+anchor_bottom = 0.675125
+offset_right = -0.23999
+offset_bottom = -0.120056
 grow_horizontal = 2
 grow_vertical = 2
 

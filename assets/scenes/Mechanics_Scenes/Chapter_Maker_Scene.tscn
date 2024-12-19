@@ -1,40 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4m0qevbvi46r"]
+[gd_scene load_steps=5 format=3 uid="uid://d4m0qevbvi46r"]
 
 [ext_resource type="Texture2D" uid="uid://dsmdc5ahlaa1m" path="res://assets/sprites/Logos/UI Question.png" id="1_igbx8"]
+[ext_resource type="Script" path="res://assets/scripts/Chapter_Creation/chapter_buttons_creation_scene.gd" id="1_r4jwf"]
 [ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="2_i71g3"]
+[ext_resource type="FontFile" uid="uid://dvex2p1l2cfg5" path="res://assets/fonts/mangatb.ttf" id="4_k45dk"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Chapter_Maker" type="Node2D"]
+script = ExtResource("1_r4jwf")
 
-[node name="Control" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 540.0
 offset_bottom = 960.0
 
-[node name="Manga_Bg" type="ColorRect" parent="Control"]
+[node name="Manga_Bg" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 2.133
+anchor_bottom = 0.675
+offset_right = 0.179932
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Question_holder" type="GridContainer" parent="UI/Manga_Bg"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 324.0
 grow_horizontal = 2
 grow_vertical = 2
+columns = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Manga_Bg"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -515.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 20
-
-[node name="TextureButton" type="TextureButton" parent="Control/Manga_Bg/VBoxContainer"]
+[node name="button_choice_one" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
 layout_mode = 2
 texture_normal = ExtResource("1_igbx8")
 
-[node name="Label" type="Label" parent="Control/Manga_Bg/VBoxContainer/TextureButton"]
+[node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_one"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,11 +51,11 @@ text = "Manga sty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton2" type="TextureButton" parent="Control/Manga_Bg/VBoxContainer"]
+[node name="button_choice_two" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
 layout_mode = 2
 texture_normal = ExtResource("1_igbx8")
 
-[node name="Label" type="Label" parent="Control/Manga_Bg/VBoxContainer/TextureButton2"]
+[node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_two"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,11 +69,11 @@ text = "Manga sty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton3" type="TextureButton" parent="Control/Manga_Bg/VBoxContainer"]
+[node name="button_choice_three" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
 layout_mode = 2
 texture_normal = ExtResource("1_igbx8")
 
-[node name="Label" type="Label" parent="Control/Manga_Bg/VBoxContainer/TextureButton3"]
+[node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_three"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,3 +86,49 @@ theme_override_font_sizes/font_size = 41
 text = "Manga sty"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="button_choice_four" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
+layout_mode = 2
+texture_normal = ExtResource("1_igbx8")
+
+[node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_four"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i71g3")
+theme_override_font_sizes/font_size = 41
+text = "Manga sty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Question_Label" type="Label" parent="UI/Manga_Bg"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_k45dk")
+theme_override_font_sizes/font_size = 50
+text = "Mangos"
+
+[node name="Result" type="Label" parent="UI/Manga_Bg"]
+layout_mode = 0
+offset_top = 202.0
+offset_right = 1152.0
+offset_bottom = 308.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_k45dk")
+theme_override_font_sizes/font_size = 51
+text = "Memou"
+
+[connection signal="pressed" from="UI/Manga_Bg/Question_holder/button_choice_one" to="." method="_on_button_choice_one_pressed"]
+[connection signal="pressed" from="UI/Manga_Bg/Question_holder/button_choice_two" to="." method="_on_button_choice_two_pressed"]
+[connection signal="pressed" from="UI/Manga_Bg/Question_holder/button_choice_three" to="." method="_on_button_choice_three_pressed"]
+[connection signal="pressed" from="UI/Manga_Bg/Question_holder/button_choice_four" to="." method="_on_button_choice_four_pressed"]
