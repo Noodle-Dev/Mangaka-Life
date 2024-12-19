@@ -31,6 +31,7 @@ var total_score = 0
 @onready var button_choice_three = $UI/Manga_Bg/Question_holder/button_choice_three
 @onready var button_choice_four = $UI/Manga_Bg/Question_holder/button_choice_four
 @onready var result_label = $UI/Manga_Bg/Result
+@onready var transition_animation = $UI/Manga_Bg/Questions_Transitions
 
 func _ready():
 	# Si las preguntas fueron cargadas correctamente, mostramos la primera
@@ -44,6 +45,7 @@ func load_question():
 	if current_question < questions.size():
 		# Carga el texto de la pregunta
 		question_label.text = questions[current_question]["text"]
+		transition_animation.play("Enter")
 		
 		# Obtiene las opciones actuales
 		var options = questions[current_question]["options"].keys()
@@ -68,6 +70,8 @@ func _on_button_selected(button):
 	var score = questions[current_question]["options"][option_text]
 	total_score += score
 	current_question += 1
+	transition_animation.play("Go")
+	await transition_animation.animation_finished
 	load_question()
 
 # Maneja los botones conectados

@@ -1,9 +1,99 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4m0qevbvi46r"]
+[gd_scene load_steps=9 format=3 uid="uid://d4m0qevbvi46r"]
 
 [ext_resource type="Texture2D" uid="uid://dsmdc5ahlaa1m" path="res://assets/sprites/Logos/UI Question.png" id="1_igbx8"]
 [ext_resource type="Script" path="res://assets/scripts/Chapter_Creation/chapter_buttons_creation_scene.gd" id="1_r4jwf"]
 [ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="2_i71g3"]
 [ext_resource type="FontFile" uid="uid://dvex2p1l2cfg5" path="res://assets/fonts/mangatb.ttf" id="4_k45dk"]
+
+[sub_resource type="Animation" id="Animation_d5q4e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Question_Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(159.5, 68)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Question_holder:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 685)]
+}
+
+[sub_resource type="Animation" id="Animation_bm2tj"]
+resource_name = "Enter_N_Go"
+length = 0.2333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Question_Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(159.5, -238), Vector2(159.5, 90), Vector2(159.5, 81)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Question_holder:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 685), Vector2(0, 296), Vector2(0, 322)]
+}
+
+[sub_resource type="Animation" id="Animation_4rlna"]
+resource_name = "Go"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Question_Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(159.5, 68), Vector2(159.5, 81), Vector2(159.5, -240)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Question_holder:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 322), Vector2(0, 311), Vector2(0, 847)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t0sgq"]
+_data = {
+"Enter": SubResource("Animation_bm2tj"),
+"Go": SubResource("Animation_4rlna"),
+"RESET": SubResource("Animation_d5q4e")
+}
 
 [node name="Chapter_Maker" type="Node2D"]
 script = ExtResource("1_r4jwf")
@@ -28,7 +118,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 324.0
+offset_top = 847.0
+offset_bottom = 523.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
@@ -106,27 +197,48 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Question_Label" type="Label" parent="UI/Manga_Bg"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.5
+offset_top = -564.0
+offset_right = 416.5
+offset_bottom = -506.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_k45dk")
 theme_override_font_sizes/font_size = 50
-text = "Mangos"
+text = "Mangos Mangos Mangos"
 
 [node name="Result" type="Label" parent="UI/Manga_Bg"]
-layout_mode = 0
-offset_top = 202.0
-offset_right = 1152.0
-offset_bottom = 308.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -53.0
+offset_right = 116.5
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_k45dk")
 theme_override_font_sizes/font_size = 51
-text = "Memou"
+
+[node name="Questions_Transitions" type="AnimationPlayer" parent="UI/Manga_Bg"]
+libraries = {
+"": SubResource("AnimationLibrary_t0sgq")
+}
 
 [connection signal="pressed" from="UI/Manga_Bg/Question_holder/button_choice_one" to="." method="_on_button_choice_one_pressed"]
 [connection signal="pressed" from="UI/Manga_Bg/Question_holder/button_choice_two" to="." method="_on_button_choice_two_pressed"]
