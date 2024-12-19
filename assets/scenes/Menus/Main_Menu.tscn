@@ -1,3 +1,48 @@
-[gd_scene format=3 uid="uid://74uq6dgbt0tb"]
+[gd_scene load_steps=4 format=3 uid="uid://74uq6dgbt0tb"]
+
+[ext_resource type="Texture2D" uid="uid://c1w7mqnf2ub24" path="res://assets/sprites/Logos/Mangaka_Logo_Button.png" id="1_unjvx"]
+[ext_resource type="Texture2D" uid="uid://l3l65tu26ljv" path="res://assets/sprites/Logos/Mangaka_Logo.png" id="2_n1j50"]
+[ext_resource type="FontFile" uid="uid://b54e5tqeqjwr4" path="res://assets/fonts/mangati.ttf" id="2_yujwp"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+
+[node name="Manga_Bg" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="Control/Manga_Bg"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 463.0
+offset_right = 478.0
+offset_bottom = 801.0
+texture_normal = ExtResource("1_unjvx")
+
+[node name="Label" type="Label" parent="Control/Manga_Bg/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+theme_override_fonts/font = ExtResource("2_yujwp")
+theme_override_font_sizes/font_size = 91
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(266, 263)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_n1j50")

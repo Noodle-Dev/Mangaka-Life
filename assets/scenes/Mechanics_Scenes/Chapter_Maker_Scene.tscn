@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4m0qevbvi46r"]
+
+[ext_resource type="Texture2D" uid="uid://dsmdc5ahlaa1m" path="res://assets/sprites/Logos/UI Question.png" id="1_igbx8"]
+[ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="2_i71g3"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+
+[node name="Manga_Bg" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Manga_Bg"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -515.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="TextureButton" type="TextureButton" parent="Control/Manga_Bg/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_igbx8")
+
+[node name="Label" type="Label" parent="Control/Manga_Bg/VBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i71g3")
+theme_override_font_sizes/font_size = 41
+text = "Manga sty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton2" type="TextureButton" parent="Control/Manga_Bg/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_igbx8")
+
+[node name="Label" type="Label" parent="Control/Manga_Bg/VBoxContainer/TextureButton2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i71g3")
+theme_override_font_sizes/font_size = 41
+text = "Manga sty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton3" type="TextureButton" parent="Control/Manga_Bg/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_igbx8")
+
+[node name="Label" type="Label" parent="Control/Manga_Bg/VBoxContainer/TextureButton3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i71g3")
+theme_override_font_sizes/font_size = 41
+text = "Manga sty"
+horizontal_alignment = 1
+vertical_alignment = 1
