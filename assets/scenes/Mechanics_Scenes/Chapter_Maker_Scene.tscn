@@ -147,9 +147,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 322.0
-offset_right = 0.000488281
-offset_bottom = -2.0
+offset_top = 685.0
+offset_right = 0.000610352
+offset_bottom = 361.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
@@ -274,9 +274,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -234.0
-offset_top = 432.0
+offset_top = 366.0
 offset_right = 234.0
-offset_bottom = 538.0
+offset_bottom = 472.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
@@ -298,6 +298,7 @@ texture_normal = ExtResource("2_2emy3")
 libraries = {
 "": SubResource("AnimationLibrary_t0sgq")
 }
+autoplay = "RESET"
 
 [connection signal="pressed" from="UI/Manga_Bg/Question_holder/button_choice_one" to="." method="_on_button_choice_one_pressed"]
 [connection signal="pressed" from="UI/Manga_Bg/Question_holder/button_choice_two" to="." method="_on_button_choice_two_pressed"]

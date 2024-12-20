@@ -11,11 +11,14 @@ extends Node2D
 #Panels
 @onready var ChapterMakerPanel = $Chapter_Maker
 
+#Objects
+@onready var critics_holder = $UI/Manga_Bg/Virality/Critics_Holder
+@export var criticObject = preload("res://assets/prefabs/Entity_Critic_UI.tscn")
+
 func _process(delta):
 	pass
-	
-	#Test
-	#balance.text = GlobalData.G_FinalScore.ToString()
+
+	balance.text = str(GlobalData.G_FinalScore)
 
 func _on_create_chapter_button_pressed():
 	transitions_panels.play("CH_Maker_Enter")
