@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8hj7cokkvuox"]
+[gd_scene load_steps=5 format=3 uid="uid://b8hj7cokkvuox"]
 
 [ext_resource type="Texture2D" uid="uid://w4n1j3cibw71" path="res://assets/sprites/UI/Comment_Background.png" id="1_e0lnq"]
 [ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="1_pk2o5"]
+[ext_resource type="Script" path="res://assets/scripts/Chapter_Creation/Critic_User_Logic.gd" id="1_th1v5"]
 [ext_resource type="Texture2D" uid="uid://dkqtphmj3r3wl" path="res://icon.svg" id="2_b4ak4"]
 
 [node name="Critic" type="Control"]
@@ -12,6 +13,7 @@ offset_right = -0.0720215
 offset_bottom = 0.0319977
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_th1v5")
 
 [node name="User" type="TextureRect" parent="."]
 layout_mode = 0
