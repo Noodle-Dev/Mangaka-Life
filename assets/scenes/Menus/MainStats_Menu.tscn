@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1goo2qilttjh"]
+[gd_scene load_steps=16 format=3 uid="uid://b1goo2qilttjh"]
 
 [ext_resource type="Script" path="res://assets/scripts/MainStats/main_stats_menu_Logic.gd" id="1_rey2q"]
 [ext_resource type="Texture2D" uid="uid://xhnet7l88rwq" path="res://assets/sprites/UI/Status_Header.png" id="2_6ckol"]
@@ -10,8 +10,47 @@
 [ext_resource type="Texture2D" uid="uid://dmj8x402ayffl" path="res://assets/sprites/UI/Header_Choices.png" id="7_bu1cm"]
 [ext_resource type="Texture2D" uid="uid://djn7h0b3tcv25" path="res://assets/sprites/UI/CreateCh_Icon.png" id="8_spb4h"]
 [ext_resource type="Texture2D" uid="uid://dkcjnh3ovas3q" path="res://assets/sprites/UI/CreateCharacter_icon.png" id="10_gapfo"]
+[ext_resource type="PackedScene" uid="uid://d4m0qevbvi46r" path="res://assets/scenes/Mechanics_Scenes/Chapter_Maker_Scene.tscn" id="11_wo0bl"]
+[ext_resource type="Texture2D" uid="uid://dpwnn3anj5uq4" path="res://assets/sprites/UI/UI Question.png" id="12_7mi4r"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Animation" id="Animation_s1bop"]
+resource_name = "CH_Maker_Enter"
+length = 0.23
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chapter_Maker:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 727), Vector2(0, -26), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_svg1k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chapter_Maker:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 727)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hxfv0"]
+_data = {
+"CH_Maker_Enter": SubResource("Animation_s1bop"),
+"RESET": SubResource("Animation_svg1k")
+}
+
+[node name="Main_Stats_Menu" type="Node2D"]
 script = ExtResource("1_rey2q")
 
 [node name="UI" type="Control" parent="."]
@@ -78,17 +117,6 @@ theme_override_fonts/normal_font = ExtResource("4_fl1j6")
 theme_override_font_sizes/normal_font_size = 50
 text = "Chapters Wrote: 00"
 
-[node name="Chapters_Wrote2" type="RichTextLabel" parent="UI/Manga_Bg/Status"]
-layout_mode = 0
-offset_left = 15.0
-offset_top = -94.0
-offset_right = 648.0
-offset_bottom = -12.0
-theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/normal_font = ExtResource("4_fl1j6")
-theme_override_font_sizes/normal_font_size = 50
-text = "Virality: None"
-
 [node name="Virality" type="TextureRect" parent="UI/Manga_Bg"]
 layout_mode = 0
 offset_left = 701.0
@@ -138,11 +166,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 75
 
-[node name="Create_Chater" type="TextureButton" parent="UI/Manga_Bg/TextureRect/HBoxContainer"]
+[node name="CreateChapter_button" type="TextureButton" parent="UI/Manga_Bg/TextureRect/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("8_spb4h")
 
-[node name="Chapters5" type="Label" parent="UI/Manga_Bg/TextureRect/HBoxContainer/Create_Chater"]
+[node name="ch_label" type="Label" parent="UI/Manga_Bg/TextureRect/HBoxContainer/CreateChapter_button"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -159,11 +187,11 @@ theme_override_font_sizes/font_size = 15
 text = "Create New CHapter"
 vertical_alignment = 1
 
-[node name="Create_Chater2" type="TextureButton" parent="UI/Manga_Bg/TextureRect/HBoxContainer"]
+[node name="Create_Character_Button" type="TextureButton" parent="UI/Manga_Bg/TextureRect/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("10_gapfo")
 
-[node name="Chapters5" type="Label" parent="UI/Manga_Bg/TextureRect/HBoxContainer/Create_Chater2"]
+[node name="char_Label" type="Label" parent="UI/Manga_Bg/TextureRect/HBoxContainer/Create_Character_Button"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -179,3 +207,39 @@ theme_override_fonts/font = ExtResource("3_dhmu0")
 theme_override_font_sizes/font_size = 15
 text = "Create New Character"
 vertical_alignment = 1
+
+[node name="virality_status" type="RichTextLabel" parent="UI"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 256.0
+offset_right = 648.0
+offset_bottom = 338.0
+theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
+theme_override_fonts/normal_font = ExtResource("4_fl1j6")
+theme_override_font_sizes/normal_font_size = 50
+text = "Virality: None"
+
+[node name="Chapter_Maker" parent="." instance=ExtResource("11_wo0bl")]
+position = Vector2(0, 727)
+
+[node name="Notifications" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1175.0
+offset_right = 1653.0
+offset_bottom = 205.0
+
+[node name="TextureRect" type="TextureRect" parent="Notifications"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_7mi4r")
+
+[node name="Transitions_Panels" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hxfv0")
+}
+autoplay = "RESET"
+
+[connection signal="pressed" from="UI/Manga_Bg/TextureRect/HBoxContainer/CreateChapter_button" to="." method="_on_create_chapter_button_pressed"]
+[connection signal="pressed" from="UI/Manga_Bg/TextureRect/HBoxContainer/Create_Character_Button" to="." method="_on_create_character_button_pressed"]
