@@ -5,33 +5,6 @@
 [ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="2_i71g3"]
 [ext_resource type="FontFile" uid="uid://dvex2p1l2cfg5" path="res://assets/fonts/mangatb.ttf" id="4_k45dk"]
 
-[sub_resource type="Animation" id="Animation_d5q4e"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Question_Label:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(159.5, 68)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Question_holder:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 685)]
-}
-
 [sub_resource type="Animation" id="Animation_bm2tj"]
 resource_name = "Enter_N_Go"
 length = 0.2333
@@ -88,6 +61,33 @@ tracks/1/keys = {
 "values": [Vector2(0, 322), Vector2(0, 311), Vector2(0, 847)]
 }
 
+[sub_resource type="Animation" id="Animation_d5q4e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Question_Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(159.5, 68)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Question_holder:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 685)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0sgq"]
 _data = {
 "Enter": SubResource("Animation_bm2tj"),
@@ -119,6 +119,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 847.0
+offset_right = 0.00012207
 offset_bottom = 523.0
 grow_horizontal = 2
 grow_vertical = 2

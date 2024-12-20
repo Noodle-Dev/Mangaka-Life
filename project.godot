@@ -12,15 +12,17 @@ config_version=5
 
 config/name="Mangaka-Life"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/window_width_override=640
-window/size/window_height_override=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

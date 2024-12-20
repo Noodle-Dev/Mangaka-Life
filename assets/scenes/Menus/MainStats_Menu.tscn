@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1goo2qilttjh"]
+[gd_scene load_steps=11 format=3 uid="uid://b1goo2qilttjh"]
 
 [ext_resource type="Script" path="res://assets/scripts/MainStats/main_stats_menu_Logic.gd" id="1_rey2q"]
+[ext_resource type="Texture2D" uid="uid://xhnet7l88rwq" path="res://assets/sprites/UI/Status_Header.png" id="2_6ckol"]
+[ext_resource type="Texture2D" uid="uid://8fd0pmjmrepn" path="res://assets/sprites/UI/BG.png" id="2_fupjd"]
 [ext_resource type="PackedScene" uid="uid://b8hj7cokkvuox" path="res://assets/prefabs/Entity_Critic_UI.tscn" id="2_npwkf"]
 [ext_resource type="FontFile" uid="uid://dvex2p1l2cfg5" path="res://assets/fonts/mangatb.ttf" id="3_dhmu0"]
+[ext_resource type="Texture2D" uid="uid://djj4jkshl6n1r" path="res://assets/sprites/UI/Comments.png" id="3_yo2dp"]
+[ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="4_fl1j6"]
+[ext_resource type="Texture2D" uid="uid://dmj8x402ayffl" path="res://assets/sprites/UI/Header_Choices.png" id="7_bu1cm"]
+[ext_resource type="Texture2D" uid="uid://djn7h0b3tcv25" path="res://assets/sprites/UI/CreateCh_Icon.png" id="8_spb4h"]
+[ext_resource type="Texture2D" uid="uid://dkcjnh3ovas3q" path="res://assets/sprites/UI/CreateCharacter_icon.png" id="10_gapfo"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_rey2q")
@@ -21,167 +28,154 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Chapters" type="Label" parent="UI/Manga_Bg"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -106.0
-offset_right = 346.0
-offset_bottom = -52.0
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_dhmu0")
-theme_override_font_sizes/font_size = 46
-text = "Chapters wrote: 00"
-vertical_alignment = 1
+[node name="Outline" type="TextureRect" parent="UI/Manga_Bg"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_fupjd")
 
-[node name="Chapters2" type="Label" parent="UI/Manga_Bg"]
+[node name="Status" type="TextureRect" parent="UI/Manga_Bg"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -172.0
-offset_right = 628.0
-offset_bottom = -118.0
+offset_top = -298.0
+offset_right = 680.0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_dhmu0")
-theme_override_font_sizes/font_size = 46
+texture = ExtResource("2_6ckol")
+
+[node name="Balance" type="RichTextLabel" parent="UI/Manga_Bg/Status"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 58.0
+offset_right = 640.0
+offset_bottom = 140.0
+theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
+theme_override_fonts/normal_font = ExtResource("4_fl1j6")
+theme_override_font_sizes/normal_font_size = 50
+text = "Balance: 00$
+"
+
+[node name="Reputation" type="RichTextLabel" parent="UI/Manga_Bg/Status"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 132.0
+offset_right = 640.0
+offset_bottom = 214.0
+theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
+theme_override_fonts/normal_font = ExtResource("4_fl1j6")
+theme_override_font_sizes/normal_font_size = 50
 text = "Reputation: 00"
-vertical_alignment = 1
 
-[node name="Chapters3" type="Label" parent="UI/Manga_Bg"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -233.0
-offset_right = 628.0
-offset_bottom = -179.0
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_dhmu0")
-theme_override_font_sizes/font_size = 46
-text = "Balance: 00$"
-vertical_alignment = 1
+[node name="Chapters_Wrote" type="RichTextLabel" parent="UI/Manga_Bg/Status"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 203.0
+offset_right = 640.0
+offset_bottom = 285.0
+theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
+theme_override_fonts/normal_font = ExtResource("4_fl1j6")
+theme_override_font_sizes/normal_font_size = 50
+text = "Chapters Wrote: 00"
 
-[node name="Chapters4" type="Label" parent="UI/Manga_Bg"]
+[node name="Chapters_Wrote2" type="RichTextLabel" parent="UI/Manga_Bg/Status"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = -94.0
+offset_right = 648.0
+offset_bottom = -12.0
+theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
+theme_override_fonts/normal_font = ExtResource("4_fl1j6")
+theme_override_font_sizes/normal_font_size = 50
+text = "Virality: None"
+
+[node name="Virality" type="TextureRect" parent="UI/Manga_Bg"]
+layout_mode = 0
+offset_left = 701.0
+offset_right = 1148.0
+offset_bottom = 648.0
+texture = ExtResource("3_yo2dp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Manga_Bg/Virality"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = -1
+anchor_left = 0.072
+anchor_right = 0.924
+anchor_bottom = 0.943
+offset_left = -0.184002
+offset_top = 37.0
+offset_right = -7.02802
+offset_bottom = -0.0640259
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 190
+
+[node name="Critic" parent="UI/Manga_Bg/Virality/VBoxContainer" instance=ExtResource("2_npwkf")]
+layout_mode = 2
+
+[node name="Critic2" parent="UI/Manga_Bg/Virality/VBoxContainer" instance=ExtResource("2_npwkf")]
+layout_mode = 2
+
+[node name="Critic3" parent="UI/Manga_Bg/Virality/VBoxContainer" instance=ExtResource("2_npwkf")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Manga_Bg"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_bu1cm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Manga_Bg/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 25.0
-offset_top = -372.0
-offset_right = 653.0
-offset_bottom = -318.0
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_dhmu0")
-theme_override_font_sizes/font_size = 46
-text = "Virality: None"
-vertical_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="UI/Manga_Bg"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -433.0
-offset_top = -298.0
-offset_right = -19.9999
-offset_bottom = 312.0
-grow_horizontal = 0
-grow_vertical = 2
-color = Color(0.366595, 0.366595, 0.366595, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Manga_Bg/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 140
-
-[node name="Control" parent="UI/Manga_Bg/ColorRect/VBoxContainer" instance=ExtResource("2_npwkf")]
-layout_mode = 2
-
-[node name="Control2" parent="UI/Manga_Bg/ColorRect/VBoxContainer" instance=ExtResource("2_npwkf")]
-layout_mode = 2
-
-[node name="Control3" parent="UI/Manga_Bg/ColorRect/VBoxContainer" instance=ExtResource("2_npwkf")]
-layout_mode = 2
-
-[node name="Control4" parent="UI/Manga_Bg/ColorRect/VBoxContainer" instance=ExtResource("2_npwkf")]
-layout_mode = 2
-
-[node name="ColorRect2" type="ColorRect" parent="UI/Manga_Bg"]
-layout_mode = 0
-offset_left = 10.0
 offset_top = 8.0
-offset_right = 664.0
-offset_bottom = 237.0
-color = Color(0.1714, 0.198179, 0.187891, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Manga_Bg/ColorRect2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -37.0
+offset_right = -14.0
+offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 260
+theme_override_constants/separation = 75
 
-[node name="TextureButton" type="TextureButton" parent="UI/Manga_Bg/ColorRect2/HBoxContainer"]
+[node name="Create_Chater" type="TextureButton" parent="UI/Manga_Bg/TextureRect/HBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("8_spb4h")
 
-[node name="Chapters5" type="Label" parent="UI/Manga_Bg/ColorRect2/HBoxContainer/TextureButton"]
+[node name="Chapters5" type="Label" parent="UI/Manga_Bg/TextureRect/HBoxContainer/Create_Chater"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = -11.0
-offset_right = 239.0
-offset_bottom = 43.0
+offset_left = -10.0
+offset_top = -21.0
+offset_right = 214.0
+offset_bottom = 33.0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
+theme_override_colors/font_shadow_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/font = ExtResource("3_dhmu0")
 theme_override_font_sizes/font_size = 15
 text = "Create New CHapter"
 vertical_alignment = 1
 
-[node name="TextureButton2" type="TextureButton" parent="UI/Manga_Bg/ColorRect2/HBoxContainer"]
+[node name="Create_Chater2" type="TextureButton" parent="UI/Manga_Bg/TextureRect/HBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("10_gapfo")
 
-[node name="Chapters5" type="Label" parent="UI/Manga_Bg/ColorRect2/HBoxContainer/TextureButton2"]
+[node name="Chapters5" type="Label" parent="UI/Manga_Bg/TextureRect/HBoxContainer/Create_Chater2"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = -11.0
-offset_right = 239.0
-offset_bottom = 43.0
+offset_left = -10.0
+offset_top = -21.0
+offset_right = 214.0
+offset_bottom = 33.0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
+theme_override_colors/font_shadow_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/font = ExtResource("3_dhmu0")
 theme_override_font_sizes/font_size = 15
-text = "Create Characters 100"
+text = "Create New Character"
 vertical_alignment = 1
