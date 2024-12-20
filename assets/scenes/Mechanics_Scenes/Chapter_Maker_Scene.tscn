@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d4m0qevbvi46r"]
 
-[ext_resource type="Texture2D" uid="uid://dsmdc5ahlaa1m" path="res://assets/sprites/Logos/UI Question.png" id="1_igbx8"]
 [ext_resource type="Script" path="res://assets/scripts/Chapter_Creation/chapter_buttons_creation_scene.gd" id="1_r4jwf"]
+[ext_resource type="Texture2D" uid="uid://dpwnn3anj5uq4" path="res://assets/sprites/UI/UI Question.png" id="2_2emy3"]
 [ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="2_i71g3"]
 [ext_resource type="FontFile" uid="uid://dvex2p1l2cfg5" path="res://assets/fonts/mangatb.ttf" id="4_k45dk"]
 
@@ -119,7 +119,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 847.0
-offset_right = 0.00012207
+offset_right = 0.000244141
 offset_bottom = 523.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -127,7 +127,7 @@ columns = 2
 
 [node name="button_choice_one" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
 layout_mode = 2
-texture_normal = ExtResource("1_igbx8")
+texture_normal = ExtResource("2_2emy3")
 
 [node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_one"]
 layout_mode = 1
@@ -136,16 +136,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/font = ExtResource("2_i71g3")
-theme_override_font_sizes/font_size = 41
+theme_override_font_sizes/font_size = 45
 text = "Manga sty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="button_choice_two" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
 layout_mode = 2
-texture_normal = ExtResource("1_igbx8")
+texture_normal = ExtResource("2_2emy3")
 
 [node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_two"]
 layout_mode = 1
@@ -154,16 +154,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/font = ExtResource("2_i71g3")
-theme_override_font_sizes/font_size = 41
+theme_override_font_sizes/font_size = 45
 text = "Manga sty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="button_choice_three" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
 layout_mode = 2
-texture_normal = ExtResource("1_igbx8")
+texture_normal = ExtResource("2_2emy3")
 
 [node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_three"]
 layout_mode = 1
@@ -172,16 +172,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/font = ExtResource("2_i71g3")
-theme_override_font_sizes/font_size = 41
+theme_override_font_sizes/font_size = 45
 text = "Manga sty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="button_choice_four" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
 layout_mode = 2
-texture_normal = ExtResource("1_igbx8")
+texture_normal = ExtResource("2_2emy3")
 
 [node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_four"]
 layout_mode = 1
@@ -190,9 +190,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/font = ExtResource("2_i71g3")
-theme_override_font_sizes/font_size = 41
+theme_override_font_sizes/font_size = 45
 text = "Manga sty"
 horizontal_alignment = 1
 vertical_alignment = 1

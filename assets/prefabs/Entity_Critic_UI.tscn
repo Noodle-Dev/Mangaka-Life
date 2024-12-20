@@ -13,13 +13,13 @@ offset_bottom = 0.0319977
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="User" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 366.0
 offset_bottom = 199.0
 texture = ExtResource("1_e0lnq")
 
-[node name="Chapters" type="Label" parent="TextureRect"]
+[node name="UserName" type="Label" parent="User"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -30,31 +30,31 @@ offset_top = 24.0
 offset_right = -48.476
 offset_bottom = 13.126
 grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/font = ExtResource("1_pk2o5")
 theme_override_font_sizes/font_size = 15
 text = "Jhon Doe"
 vertical_alignment = 1
 
-[node name="Chapters2" type="Label" parent="TextureRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -218.0
-offset_top = 62.0
-offset_bottom = 169.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_pk2o5")
-theme_override_font_sizes/font_size = 15
-text = "Critic Critic Critic Critic "
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+[node name="UserPic" type="TextureRect" parent="User"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 28.0
 offset_right = 144.0
 offset_bottom = 156.0
 texture = ExtResource("2_b4ak4")
+
+[node name="UserOpiniion" type="RichTextLabel" parent="User"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.413
+anchor_top = 0.357
+anchor_right = 0.932
+anchor_bottom = 0.859
+offset_left = -0.158005
+offset_top = -0.0430069
+offset_right = -0.11203
+offset_bottom = 0.0589905
+theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
+theme_override_fonts/normal_font = ExtResource("1_pk2o5")
+text = "MUSTAAAAAAAAARD"

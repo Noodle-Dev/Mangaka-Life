@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://74uq6dgbt0tb"]
 
 [ext_resource type="Script" path="res://assets/scripts/MainMenu/MainMenuLogic.gd" id="1_0vluc"]
-[ext_resource type="Texture2D" uid="uid://dsmdc5ahlaa1m" path="res://assets/sprites/Logos/UI Question.png" id="1_di0wj"]
 [ext_resource type="Texture2D" uid="uid://dv6unjeyn8nv2" path="res://assets/sprites/UI/Bakcground_UI.png" id="2_lqaib"]
 [ext_resource type="Texture2D" uid="uid://l3l65tu26ljv" path="res://assets/sprites/Logos/Mangaka_Logo.png" id="2_n1j50"]
 [ext_resource type="FontFile" uid="uid://b54e5tqeqjwr4" path="res://assets/fonts/mangati.ttf" id="2_yujwp"]
+[ext_resource type="Texture2D" uid="uid://dpwnn3anj5uq4" path="res://assets/sprites/UI/UI Question.png" id="3_elwh1"]
 
 [sub_resource type="Animation" id="Animation_b8y0y"]
 length = 0.001
@@ -40,7 +40,7 @@ offset_left = 292.0
 offset_top = 347.0
 offset_right = 832.0
 offset_bottom = 506.0
-texture_normal = ExtResource("1_di0wj")
+texture_normal = ExtResource("3_elwh1")
 
 [node name="Label" type="Label" parent="Control/TextureRect/TextureButton"]
 layout_mode = 1
@@ -49,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/font = ExtResource("2_yujwp")
 theme_override_font_sizes/font_size = 61
 text = "Start Game"
