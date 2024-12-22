@@ -52,7 +52,6 @@ _data = {
 
 [node name="Main_Stats_Menu" type="Node2D"]
 script = ExtResource("1_rey2q")
-criticism_probability = 1.0
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -242,5 +241,8 @@ libraries = {
 }
 autoplay = "RESET"
 
+[node name="CriticismTimer" type="Timer" parent="."]
+
 [connection signal="pressed" from="UI/Manga_Bg/TextureRect/HBoxContainer/CreateChapter_button" to="." method="_on_create_chapter_button_pressed"]
 [connection signal="pressed" from="UI/Manga_Bg/TextureRect/HBoxContainer/Create_Character_Button" to="." method="_on_create_character_button_pressed"]
+[connection signal="timeout" from="CriticismTimer" to="." method="_on_timer_timeout"]
