@@ -20,12 +20,20 @@ extends Node2D
 @export var criticism_probability = 0.1  # 10% de probabilidad por frame
 
 func _process(delta):
-	# Actualiza el puntaje mostrado
-	balance.text = str(GlobalData.G_FinalScore)
+	balance.text = "Balance: " + str(GlobalData.G_FinalScore)
+	reputation.text = "Reputation: "
+	chapters_wrote.text = "Chapters wrote: " + str(GlobalData.G_Chap_Wrote)
+	#virality_status.text = "Virality: "
+	
 	
 	# Genera críticas de manera aleatoria
 	if randf() < criticism_probability:
-		generate_criticism()
+		pass
+		#generate_criticism()
+		
+func DetermineRep():
+	pass #Basado en GlobalData.G_Reputation determina si tiene buena reputacion, mala reputacion basandonos en un valor que ira subiendo dependiendo en la demanda de los criticos 
+	
 
 func generate_criticism():
 	# Verifica que criticObject sea válido

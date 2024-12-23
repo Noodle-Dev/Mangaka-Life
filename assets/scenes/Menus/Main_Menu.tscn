@@ -8,10 +8,34 @@
 
 [sub_resource type="Animation" id="Animation_b8y0y"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Transition:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.211765, 0.262745, 0.458824, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_pfluv"]
 resource_name = "Transition"
 length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Transition:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.211765, 0.262745, 0.458824, 0), Color(0.211765, 0.262745, 0.458824, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5hieo"]
 _data = {
@@ -63,14 +87,15 @@ offset_right = 766.0
 offset_bottom = 338.0
 texture = ExtResource("2_n1j50")
 
-[node name="Transition" type="ColorRect" parent="."]
+[node name="Transition" type="ColorRect" parent="Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.211765, 0.262745, 0.458824, 1)
+color = Color(0.211765, 0.262745, 0.458824, 0)
 
 [node name="GO" type="AnimationPlayer" parent="."]
 libraries = {

@@ -147,13 +147,13 @@ layout_mode = 2
 [node name="Critic3" parent="UI/Manga_Bg/Virality/Critics_Holder" instance=ExtResource("2_npwkf")]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI/Manga_Bg"]
+[node name="Options" type="TextureRect" parent="UI/Manga_Bg"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("7_bu1cm")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Manga_Bg/TextureRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Manga_Bg/Options"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -166,11 +166,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 75
 
-[node name="CreateChapter_button" type="TextureButton" parent="UI/Manga_Bg/TextureRect/HBoxContainer"]
+[node name="CreateChapter_button" type="TextureButton" parent="UI/Manga_Bg/Options/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("8_spb4h")
 
-[node name="ch_label" type="Label" parent="UI/Manga_Bg/TextureRect/HBoxContainer/CreateChapter_button"]
+[node name="ch_label" type="Label" parent="UI/Manga_Bg/Options/HBoxContainer/CreateChapter_button"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -187,11 +187,11 @@ theme_override_font_sizes/font_size = 15
 text = "Create New CHapter"
 vertical_alignment = 1
 
-[node name="Create_Character_Button" type="TextureButton" parent="UI/Manga_Bg/TextureRect/HBoxContainer"]
+[node name="Create_Character_Button" type="TextureButton" parent="UI/Manga_Bg/Options/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("10_gapfo")
 
-[node name="char_Label" type="Label" parent="UI/Manga_Bg/TextureRect/HBoxContainer/Create_Character_Button"]
+[node name="char_Label" type="Label" parent="UI/Manga_Bg/Options/HBoxContainer/Create_Character_Button"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -243,6 +243,6 @@ autoplay = "RESET"
 
 [node name="CriticismTimer" type="Timer" parent="."]
 
-[connection signal="pressed" from="UI/Manga_Bg/TextureRect/HBoxContainer/CreateChapter_button" to="." method="_on_create_chapter_button_pressed"]
-[connection signal="pressed" from="UI/Manga_Bg/TextureRect/HBoxContainer/Create_Character_Button" to="." method="_on_create_character_button_pressed"]
+[connection signal="pressed" from="UI/Manga_Bg/Options/HBoxContainer/CreateChapter_button" to="." method="_on_create_chapter_button_pressed"]
+[connection signal="pressed" from="UI/Manga_Bg/Options/HBoxContainer/Create_Character_Button" to="." method="_on_create_character_button_pressed"]
 [connection signal="timeout" from="CriticismTimer" to="." method="_on_timer_timeout"]

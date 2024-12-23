@@ -59,4 +59,4 @@ offset_right = -0.11203
 offset_bottom = 0.0589905
 theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/normal_font = ExtResource("1_pk2o5")
-text = "MUSTAAAAAAAAARD"
+text = "A"
