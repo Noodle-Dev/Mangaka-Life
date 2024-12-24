@@ -1,5 +1,5 @@
 extends Node
-var G_Balance = 0
+var G_Balance = 500
 var G_Reputation = 0
 var G_Chap_Wrote = 0
 
