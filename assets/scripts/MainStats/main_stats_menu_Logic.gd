@@ -56,7 +56,6 @@ func generate_criticism():
 
 
 # Función para manejar el botón de creación de capítulos
-# Función para manejar el botón de creación de capítulos
 func _on_create_chapter_button_pressed():
 	# Resta 250 de balance por cada capítulo creado
 	if GlobalData.G_Balance >= 250:
@@ -73,5 +72,14 @@ func _on_create_chapter_button_pressed():
 
 # Función para manejar el botón de creación de personajes
 func _on_create_character_button_pressed():
-	print("Botón de creación de personajes presionado.")
-	# Aquí puedes añadir lógica para manejar la creación de personajes
+		# Resta 250 de balance por cada capítulo creado
+	if GlobalData.G_Balance >= 150:
+		GlobalData.G_Balance -= 150
+		balance.text = "Balance: " + str(GlobalData.G_Balance) + "$"
+		transitions_panels.play("CHARAC_Maker_Enter")
+		# Espera a que termine la animación y luego inicializa el creador de capítulos
+		ChapterMakerPanel.initialize_quiz()
+	else:
+		# Si no hay suficiente balance, muestra un mensaje de error o avisa al jugador
+		print("No tienes suficiente balance para crear un capítulo.")
+		# Aquí puedes añadir un mensaje visual en la interfaz si lo prefieres

@@ -3,6 +3,7 @@ extends Control
 @onready var user_name = $User/UserName
 @onready var user_opinion = $User/UserOpiniion  # Nombre corregido
 @onready var user_pic = $User/UserPic
+@onready var uniqueOpinion
 
 @export var good_opinions = ["¡Me encantó!", "Una obra maestra.", "Increíblemente creativo."]
 @export var bad_opinions = ["No es de mi agrado.", "Le falta algo.", "Demasiado simple."]
@@ -10,6 +11,8 @@ extends Control
 @export var user_pic_folder = "res://assets/sprites/User pfps/"  # Ruta de la carpeta de imágenes
 
 func _ready():
+	uniqueOpinion = randi_range(0, 100)
+	print("my opinion is ", uniqueOpinion)
 	# Verificar si los nodos existen
 	if user_name == null or user_opinion == null or user_pic == null:
 		print("Error: Los nodos 'user_name', 'user_opinion' o 'user_pic' no están configurados en esta instancia.")
@@ -34,9 +37,13 @@ func set_critic_data():
 	# Determina si la opinión será buena o mala
 	var is_good = critic_score >= GlobalData.G_FinalScore
 	user_opinion.text = good_opinions[randi() % good_opinions.size()] if is_good else bad_opinions[randi() % bad_opinions.size()]
-
+	if is_good:
+		GlobalData.G_Reputation + randi_range(3, 100)
+	else:
+		GlobalData.G_Reputation - randi_range(3, 100)
 	# Asigna una imagen aleatoria
 	set_random_user_pic()
+	print(GlobalData.G_Reputation)
 
 	# Depuración: Imprime el puntaje del crítico y su opinión
 	print("Crítico:", user_name.text, "Puntaje:", critic_score, "Opinión:", user_opinion.text)

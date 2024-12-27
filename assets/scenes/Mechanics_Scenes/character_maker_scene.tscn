@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4m0qevbvi46r"]
+[gd_scene load_steps=9 format=3 uid="uid://c0wjcxb8tro7v"]
 
-[ext_resource type="Script" path="res://assets/scripts/Chapter_Creation/chapter_buttons_creation_scene.gd" id="1_r4jwf"]
-[ext_resource type="Texture2D" uid="uid://dpwnn3anj5uq4" path="res://assets/sprites/UI/UI Question.png" id="2_2emy3"]
-[ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="2_i71g3"]
-[ext_resource type="FontFile" uid="uid://dvex2p1l2cfg5" path="res://assets/fonts/mangatb.ttf" id="4_k45dk"]
+[ext_resource type="Texture2D" uid="uid://dpwnn3anj5uq4" path="res://assets/sprites/UI/UI Question.png" id="1_ejwus"]
+[ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="2_o7nwt"]
+[ext_resource type="FontFile" uid="uid://dvex2p1l2cfg5" path="res://assets/fonts/mangatb.ttf" id="3_dinwa"]
 
 [sub_resource type="Animation" id="Animation_bm2tj"]
 resource_name = "Enter_N_Go"
@@ -124,8 +123,7 @@ _data = {
 "RESET": SubResource("Animation_d5q4e")
 }
 
-[node name="Chapter_Maker" type="Node2D"]
-script = ExtResource("1_r4jwf")
+[node name="Character_Maker_Scene" type="Node2D"]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -156,7 +154,7 @@ columns = 2
 
 [node name="button_choice_one" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
 layout_mode = 2
-texture_normal = ExtResource("2_2emy3")
+texture_normal = ExtResource("1_ejwus")
 
 [node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_one"]
 layout_mode = 1
@@ -166,7 +164,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/font = ExtResource("2_i71g3")
+theme_override_fonts/font = ExtResource("2_o7nwt")
 theme_override_font_sizes/font_size = 45
 text = "Manga sty"
 horizontal_alignment = 1
@@ -174,7 +172,7 @@ vertical_alignment = 1
 
 [node name="button_choice_two" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
 layout_mode = 2
-texture_normal = ExtResource("2_2emy3")
+texture_normal = ExtResource("1_ejwus")
 
 [node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_two"]
 layout_mode = 1
@@ -184,7 +182,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/font = ExtResource("2_i71g3")
+theme_override_fonts/font = ExtResource("2_o7nwt")
 theme_override_font_sizes/font_size = 45
 text = "Manga sty"
 horizontal_alignment = 1
@@ -192,7 +190,7 @@ vertical_alignment = 1
 
 [node name="button_choice_three" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
 layout_mode = 2
-texture_normal = ExtResource("2_2emy3")
+texture_normal = ExtResource("1_ejwus")
 
 [node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_three"]
 layout_mode = 1
@@ -202,7 +200,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/font = ExtResource("2_i71g3")
+theme_override_fonts/font = ExtResource("2_o7nwt")
 theme_override_font_sizes/font_size = 45
 text = "Manga sty"
 horizontal_alignment = 1
@@ -210,7 +208,7 @@ vertical_alignment = 1
 
 [node name="button_choice_four" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
 layout_mode = 2
-texture_normal = ExtResource("2_2emy3")
+texture_normal = ExtResource("1_ejwus")
 
 [node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_four"]
 layout_mode = 1
@@ -220,7 +218,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/font = ExtResource("2_i71g3")
+theme_override_fonts/font = ExtResource("2_o7nwt")
 theme_override_font_sizes/font_size = 45
 text = "Manga sty"
 horizontal_alignment = 1
@@ -241,7 +239,7 @@ offset_bottom = -198.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/font = ExtResource("4_k45dk")
+theme_override_fonts/font = ExtResource("3_dinwa")
 theme_override_font_sizes/font_size = 50
 text = "Mangos Mangos Mangos"
 horizontal_alignment = 1
@@ -261,7 +259,7 @@ offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/normal_font = ExtResource("2_i71g3")
+theme_override_fonts/normal_font = ExtResource("2_o7nwt")
 theme_override_font_sizes/normal_font_size = 61
 bbcode_enabled = true
 text = "[center]aaaa[/center]"
@@ -280,7 +278,7 @@ offset_bottom = 472.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/font = ExtResource("4_k45dk")
+theme_override_fonts/font = ExtResource("3_dinwa")
 theme_override_font_sizes/font_size = 51
 text = "Sacaste 0 pa"
 horizontal_alignment = 1
@@ -292,16 +290,10 @@ offset_left = -38.9999
 offset_top = 106.0
 offset_right = 501.0
 offset_bottom = 249.0
-texture_normal = ExtResource("2_2emy3")
+texture_normal = ExtResource("1_ejwus")
 
 [node name="Questions_Transitions" type="AnimationPlayer" parent="UI/Manga_Bg"]
 libraries = {
 "": SubResource("AnimationLibrary_t0sgq")
 }
 autoplay = "RESET"
-
-[connection signal="pressed" from="UI/Manga_Bg/Question_holder/button_choice_one" to="." method="_on_button_choice_one_pressed"]
-[connection signal="pressed" from="UI/Manga_Bg/Question_holder/button_choice_two" to="." method="_on_button_choice_two_pressed"]
-[connection signal="pressed" from="UI/Manga_Bg/Question_holder/button_choice_three" to="." method="_on_button_choice_three_pressed"]
-[connection signal="pressed" from="UI/Manga_Bg/Question_holder/button_choice_four" to="." method="_on_button_choice_four_pressed"]
-[connection signal="pressed" from="UI/Manga_Bg/Result/FinishMangaBtn" to="." method="_on_finish_manga_btn_pressed"]
