@@ -16,27 +16,30 @@ extends Node2D
 @onready var critics_holder = $UI/Manga_Bg/Virality/Critics_Holder
 @export var criticObject: PackedScene = preload("res://assets/prefabs/Entity_Critic_UI.tscn")
 
-# Probabilidad de ocurrencia de una crítica
-@export var criticism_probability = 0.1  # 10% de probabilidad por frame
+# Temporizador para críticas
+@onready var criticism_timer = $CriticismTimer
 
-func _process(delta):
-	balance.text = "Balance: " + str(GlobalData.G_Balance) + "$"
-	reputation.text = "Reputation: "
-	chapters_wrote.text = "Chapters wrote: " + str(GlobalData.G_Chap_Wrote)
-	#virality_status.text = "Virality: "
-	
-	# Si hay más de un capítulo escrito, genera críticas de manera aleatoria
-	if GlobalData.G_Chap_Wrote > 1 and randf() < criticism_probability:
+# Rango de tiempo para críticas (en segundos)
+@export var min_criticism_interval = 3
+@export var max_criticism_interval = 10
+
+func _ready():
+	# Configurar el temporizador al inicio
+	criticism_timer.wait_time = randf_range(min_criticism_interval, max_criticism_interval)
+	criticism_timer.start()
+
+# Función llamada por el temporizador
+func _on_CriticismTimer_timeout():
+	# Verifica si hay al menos un capítulo escrito
+	if GlobalData.G_Chap_Wrote >= 1:
 		generate_criticism()
-		
-func DetermineRep():
-	pass #Basado en GlobalData.G_Reputation determina si tiene buena reputacion, mala reputacion basandonos en un valor que ira subiendo dependiendo en la demanda de los criticos 
-	
+
+	# Configura el temporizador para un intervalo aleatorio nuevamente
+	criticism_timer.wait_time = randf_range(min_criticism_interval, max_criticism_interval)
+	criticism_timer.start()
 
 func generate_criticism():
-	# Verifica que criticObject sea válido
 	if criticObject and criticObject is PackedScene:
-		# Instancia un nuevo objeto de crítica
 		var new_critic = criticObject.instantiate()
 		
 		# Configura las preferencias del crítico
@@ -48,12 +51,9 @@ func generate_criticism():
 		
 		# Añade el objeto al contenedor de críticas (critics_holder)
 		critics_holder.add_child(new_critic)
-		
-		# Mensaje de consola para verificar
 		print("Crítico generado y añadido al contenedor de críticas.")
 	else:
 		print("Error: criticObject no es un PackedScene válido.")
-
 
 # Función para manejar el botón de creación de capítulos
 func _on_create_chapter_button_pressed():
@@ -61,18 +61,18 @@ func _on_create_chapter_button_pressed():
 	if GlobalData.G_Balance >= 250:
 		GlobalData.G_Balance -= 250
 		balance.text = "Balance: " + str(GlobalData.G_Balance) + "$"
+		GlobalData.G_Chap_Wrote += 1
+		chapters_wrote.text = "Chapters wrote: " + str(GlobalData.G_Chap_Wrote)
 		transitions_panels.play("CH_Maker_Enter")
-		# Espera a que termine la animación y luego inicializa el creador de capítulos
 		ChapterMakerPanel.initialize_quiz()
 	else:
 		# Si no hay suficiente balance, muestra un mensaje de error o avisa al jugador
 		print("No tienes suficiente balance para crear un capítulo.")
 		# Aquí puedes añadir un mensaje visual en la interfaz si lo prefieres
 
-
 # Función para manejar el botón de creación de personajes
 func _on_create_character_button_pressed():
-		# Resta 250 de balance por cada capítulo creado
+	# Resta 150 de balance por cada personaje creado
 	if GlobalData.G_Balance >= 150:
 		GlobalData.G_Balance -= 150
 		balance.text = "Balance: " + str(GlobalData.G_Balance) + "$"
@@ -81,5 +81,5 @@ func _on_create_character_button_pressed():
 		ChapterMakerPanel.initialize_quiz()
 	else:
 		# Si no hay suficiente balance, muestra un mensaje de error o avisa al jugador
-		print("No tienes suficiente balance para crear un capítulo.")
+		print("No tienes suficiente balance para crear un personaje.")
 		# Aquí puedes añadir un mensaje visual en la interfaz si lo prefieres
