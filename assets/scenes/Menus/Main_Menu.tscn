@@ -120,9 +120,8 @@ vertical_alignment = 1
 [node name="MainTitle" type="TextureRect" parent="Control/TextureRect"]
 layout_mode = 0
 offset_left = 314.0
-offset_top = 2.79967
 offset_right = 766.0
-offset_bottom = 340.8
+offset_bottom = 338.0
 texture = ExtResource("2_n1j50")
 
 [node name="Transition" type="ColorRect" parent="Control"]
