@@ -1,9 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8hj7cokkvuox"]
+[gd_scene load_steps=7 format=3 uid="uid://b8hj7cokkvuox"]
 
 [ext_resource type="Texture2D" uid="uid://w4n1j3cibw71" path="res://assets/sprites/UI/Comment_Background.png" id="1_e0lnq"]
 [ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="1_pk2o5"]
 [ext_resource type="Script" path="res://assets/scripts/Chapter_Creation/Critic_User_Logic.gd" id="1_th1v5"]
 [ext_resource type="Texture2D" uid="uid://dkqtphmj3r3wl" path="res://icon.svg" id="2_b4ak4"]
+[ext_resource type="Shader" path="res://assets/shaders/wavy_shader.gdshader" id="2_f31kp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y256v"]
+shader = ExtResource("2_f31kp")
+shader_parameter/waveAmplitude = 0.049
+shader_parameter/correctVertex = true
+shader_parameter/waveFrequency = 5.294
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 0.5
+shader_parameter/progress = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/freezeFirstHalf = false
+shader_parameter/freezeSecondHalf = false
 
 [node name="Critic" type="Control"]
 layout_mode = 3
@@ -16,6 +32,7 @@ grow_vertical = 2
 script = ExtResource("1_th1v5")
 
 [node name="User" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_y256v")
 layout_mode = 0
 offset_right = 366.0
 offset_bottom = 199.0
@@ -46,7 +63,7 @@ offset_right = 144.0
 offset_bottom = 156.0
 texture = ExtResource("2_b4ak4")
 
-[node name="UserOpiniion" type="RichTextLabel" parent="User"]
+[node name="UserOpinion" type="RichTextLabel" parent="User"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.413

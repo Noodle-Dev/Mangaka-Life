@@ -261,6 +261,8 @@ libraries = {
 autoplay = "RESET"
 
 [node name="CriticismTimer" type="Timer" parent="."]
+wait_time = 5.0
 
 [connection signal="pressed" from="UI/Manga_Bg/Options/HBoxContainer/CreateChapter_button" to="." method="_on_create_chapter_button_pressed"]
 [connection signal="pressed" from="UI/Manga_Bg/Options/HBoxContainer/Create_Character_Button" to="." method="_on_create_character_button_pressed"]
+[connection signal="timeout" from="CriticismTimer" to="." method="_on_criticism_timer_timeout"]

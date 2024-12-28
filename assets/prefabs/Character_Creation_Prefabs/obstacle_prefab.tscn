@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://wkrhantia8yp"]
+
+[ext_resource type="Script" path="res://assets/scripts/Character_Creation/obstacle_moving.gd" id="1_cmbiw"]
+[ext_resource type="Texture2D" uid="uid://dkqtphmj3r3wl" path="res://icon.svg" id="2_7pmfk"]
+
+[node name="Obstacle" type="Node2D"]
+script = ExtResource("1_cmbiw")
+
+[node name="Object" type="Sprite2D" parent="."]
+texture = ExtResource("2_7pmfk")
+
+[node name="Area2D" type="Area2D" parent="." groups=["obs"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

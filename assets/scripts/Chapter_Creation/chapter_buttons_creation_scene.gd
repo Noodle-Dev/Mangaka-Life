@@ -85,7 +85,7 @@ func _on_button_choice_four_pressed():
 
 # Finaliza el cuestionario
 func finalize_quiz():
-	question_label.text = "¡Cuestionario finalizado!"
+	question_label.text = "Chapter created!"
 	button_choice_one.visible = false
 	button_choice_two.visible = false
 	button_choice_three.visible = false

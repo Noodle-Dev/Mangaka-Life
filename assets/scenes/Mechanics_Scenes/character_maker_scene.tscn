@@ -1,299 +1,65 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0wjcxb8tro7v"]
+[gd_scene load_steps=6 format=3 uid="uid://c0wjcxb8tro7v"]
 
-[ext_resource type="Texture2D" uid="uid://dpwnn3anj5uq4" path="res://assets/sprites/UI/UI Question.png" id="1_ejwus"]
-[ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="2_o7nwt"]
-[ext_resource type="FontFile" uid="uid://dvex2p1l2cfg5" path="res://assets/fonts/mangatb.ttf" id="3_dinwa"]
+[ext_resource type="Shader" path="res://assets/shaders/bg_shader.gdshader" id="1_d2pm7"]
+[ext_resource type="Texture2D" uid="uid://cnrepagugekve" path="res://assets/sprites/UI/MiniGameHolder.png" id="2_7nu4h"]
+[ext_resource type="Script" path="res://assets/scripts/Character_Creation/move_points_logic.gd" id="3_isdqb"]
+[ext_resource type="PackedScene" uid="uid://cu7kjinsqq10t" path="res://assets/prefabs/Character_Creation_Prefabs/ball_in_game.tscn" id="3_v2lwl"]
 
-[sub_resource type="Animation" id="Animation_bm2tj"]
-resource_name = "Enter_N_Go"
-length = 0.2333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Question_Labelo:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(159.5, -238), Vector2(159.5, 90), Vector2(159.5, 81)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Question_holder:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 685), Vector2(0, 296), Vector2(0, 322)]
-}
-
-[sub_resource type="Animation" id="Animation_n56ls"]
-resource_name = "Finish"
-length = 0.12
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Result:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(342, 690), Vector2(342, 126)]
-}
-
-[sub_resource type="Animation" id="Animation_4rlna"]
-resource_name = "Go"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Question_Labelo:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(159.5, 68), Vector2(159.5, 81), Vector2(159.5, -240)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Question_holder:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 322), Vector2(0, 311), Vector2(0, 847)]
-}
-
-[sub_resource type="Animation" id="Animation_d5q4e"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Question_Labelo:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(159.5, 68)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Question_holder:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 685)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Result:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(342, 690)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_t0sgq"]
-_data = {
-"Enter": SubResource("Animation_bm2tj"),
-"Finish": SubResource("Animation_n56ls"),
-"Go": SubResource("Animation_4rlna"),
-"RESET": SubResource("Animation_d5q4e")
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ejshx"]
+shader = ExtResource("1_d2pm7")
+shader_parameter/color_one = Color(1, 1, 1, 1)
+shader_parameter/color_two = Color(0.898039, 0.921569, 0.968627, 1)
+shader_parameter/angle = 130.59
+shader_parameter/line_count = 10.0
+shader_parameter/speed = 2.0
+shader_parameter/blur = 0.0
 
 [node name="Character_Maker_Scene" type="Node2D"]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 540.0
-offset_bottom = 960.0
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="Manga_Bg" type="ColorRect" parent="UI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 2.133
-anchor_bottom = 0.675
-offset_right = 0.179932
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Question_holder" type="GridContainer" parent="UI/Manga_Bg"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 685.0
-offset_right = 0.00109863
-offset_bottom = 361.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 2
-
-[node name="button_choice_one" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
-layout_mode = 2
-texture_normal = ExtResource("1_ejwus")
-
-[node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_one"]
+material = SubResource("ShaderMaterial_ejshx")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/font = ExtResource("2_o7nwt")
-theme_override_font_sizes/font_size = 45
-text = "Manga sty"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="button_choice_two" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
-layout_mode = 2
-texture_normal = ExtResource("1_ejwus")
-
-[node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_two"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/font = ExtResource("2_o7nwt")
-theme_override_font_sizes/font_size = 45
-text = "Manga sty"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="button_choice_three" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
-layout_mode = 2
-texture_normal = ExtResource("1_ejwus")
-
-[node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_three"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/font = ExtResource("2_o7nwt")
-theme_override_font_sizes/font_size = 45
-text = "Manga sty"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="button_choice_four" type="TextureButton" parent="UI/Manga_Bg/Question_holder"]
-layout_mode = 2
-texture_normal = ExtResource("1_ejwus")
-
-[node name="Label" type="Label" parent="UI/Manga_Bg/Question_holder/button_choice_four"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/font = ExtResource("2_o7nwt")
-theme_override_font_sizes/font_size = 45
-text = "Manga sty"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Question_Labelo" type="Label" parent="UI/Manga_Bg"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -416.5
-offset_top = -256.0
-offset_right = 416.5
-offset_bottom = -198.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/font = ExtResource("3_dinwa")
-theme_override_font_sizes/font_size = 50
-text = "Mangos Mangos Mangos"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Question_Label" type="RichTextLabel" parent="UI/Manga_Bg"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -518.0
-offset_top = -256.0
-offset_right = 531.0
-offset_bottom = -43.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/normal_font = ExtResource("2_o7nwt")
-theme_override_font_sizes/normal_font_size = 61
-bbcode_enabled = true
-text = "[center]aaaa[/center]"
-
-[node name="Result" type="Label" parent="UI/Manga_Bg"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -234.0
-offset_top = 366.0
-offset_right = 234.0
-offset_bottom = 472.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/font = ExtResource("3_dinwa")
-theme_override_font_sizes/font_size = 51
-text = "Sacaste 0 pa"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FinishMangaBtn" type="TextureButton" parent="UI/Manga_Bg/Result"]
+[node name="TextureRect" type="TextureRect" parent="UI/Manga_Bg"]
 layout_mode = 0
-offset_left = -38.9999
-offset_top = 106.0
-offset_right = 501.0
-offset_bottom = 249.0
-texture_normal = ExtResource("1_ejwus")
+offset_left = 13.0
+offset_top = 300.0
+offset_right = 1140.0
+offset_bottom = 637.0
+texture = ExtResource("2_7nu4h")
 
-[node name="Questions_Transitions" type="AnimationPlayer" parent="UI/Manga_Bg"]
-libraries = {
-"": SubResource("AnimationLibrary_t0sgq")
-}
-autoplay = "RESET"
+[node name="Move_Points" type="Node2D" parent="."]
+position = Vector2(123, 363)
+
+[node name="Pos_1" type="Node2D" parent="Move_Points"]
+
+[node name="Pos_2" type="Node2D" parent="Move_Points"]
+position = Vector2(0, 95)
+
+[node name="Pos_3" type="Node2D" parent="Move_Points"]
+position = Vector2(0, 200)
+
+[node name="Spawn" type="Node2D" parent="."]
+position = Vector2(1064, 363)
+script = ExtResource("3_isdqb")
+
+[node name="Obs_1" type="Node2D" parent="Spawn"]
+
+[node name="Obs_2" type="Node2D" parent="Spawn"]
+position = Vector2(0, 95)
+
+[node name="Obs_3" type="Node2D" parent="Spawn"]
+position = Vector2(0, 200)
+
+[node name="Ball_In_Game" parent="." instance=ExtResource("3_v2lwl")]

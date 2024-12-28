@@ -1,9 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4m0qevbvi46r"]
+[gd_scene load_steps=13 format=3 uid="uid://d4m0qevbvi46r"]
 
 [ext_resource type="Script" path="res://assets/scripts/Chapter_Creation/chapter_buttons_creation_scene.gd" id="1_r4jwf"]
 [ext_resource type="Texture2D" uid="uid://dpwnn3anj5uq4" path="res://assets/sprites/UI/UI Question.png" id="2_2emy3"]
+[ext_resource type="Texture2D" uid="uid://d1tgqbo06s0mn" path="res://assets/sprites/UI/QuestionHolder.png" id="2_77832"]
 [ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="2_i71g3"]
+[ext_resource type="Shader" path="res://assets/shaders/bg_shader.gdshader" id="2_rh5ak"]
 [ext_resource type="FontFile" uid="uid://dvex2p1l2cfg5" path="res://assets/fonts/mangatb.ttf" id="4_k45dk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ov8mx"]
+shader = ExtResource("2_rh5ak")
+shader_parameter/color_one = Color(1, 1, 1, 1)
+shader_parameter/color_two = Color(0.899233, 0.922047, 0.970273, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 4.0
+shader_parameter/blur = 0.0
 
 [sub_resource type="Animation" id="Animation_bm2tj"]
 resource_name = "Enter_N_Go"
@@ -134,6 +145,7 @@ offset_right = 540.0
 offset_bottom = 960.0
 
 [node name="Manga_Bg" type="ColorRect" parent="UI"]
+material = SubResource("ShaderMaterial_ov8mx")
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 2.133
@@ -142,13 +154,19 @@ offset_right = 0.179932
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="UI/Manga_Bg"]
+layout_mode = 0
+offset_right = 1046.0
+offset_bottom = 253.0
+texture = ExtResource("2_77832")
+
 [node name="Question_holder" type="GridContainer" parent="UI/Manga_Bg"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 685.0
-offset_right = 0.0012207
+offset_right = 0.00134277
 offset_bottom = 361.0
 grow_horizontal = 2
 grow_vertical = 2
