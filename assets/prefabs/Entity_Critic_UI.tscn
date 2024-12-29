@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://w4n1j3cibw71" path="res://assets/sprites/UI/Comment_Background.png" id="1_e0lnq"]
 [ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="1_pk2o5"]
 [ext_resource type="Script" path="res://assets/scripts/Chapter_Creation/Critic_User_Logic.gd" id="1_th1v5"]
-[ext_resource type="Texture2D" uid="uid://dkqtphmj3r3wl" path="res://icon.svg" id="2_b4ak4"]
 [ext_resource type="Shader" path="res://assets/shaders/wavy_shader.gdshader" id="2_f31kp"]
+[ext_resource type="Texture2D" uid="uid://ys4vi6dovx5g" path="res://assets/sprites/User pfps/ico_1.png" id="5_lab63"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y256v"]
 shader = ExtResource("2_f31kp")
@@ -21,7 +21,7 @@ shader_parameter/secondHalf = 0.5
 shader_parameter/freezeFirstHalf = false
 shader_parameter/freezeSecondHalf = false
 
-[node name="Critic" type="Control"]
+[node name="Critic" type="Control" groups=["critic"]]
 layout_mode = 3
 anchor_right = 0.336
 anchor_bottom = 0.216
@@ -61,7 +61,7 @@ offset_left = 16.0
 offset_top = 28.0
 offset_right = 144.0
 offset_bottom = 156.0
-texture = ExtResource("2_b4ak4")
+texture = ExtResource("5_lab63")
 
 [node name="UserOpinion" type="RichTextLabel" parent="User"]
 layout_mode = 1
@@ -76,4 +76,4 @@ offset_right = -0.11203
 offset_bottom = 0.0589905
 theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/normal_font = ExtResource("1_pk2o5")
-text = "A"
+text = "PlaceHolder"

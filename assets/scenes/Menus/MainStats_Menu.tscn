@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1goo2qilttjh"]
+[gd_scene load_steps=21 format=3 uid="uid://b1goo2qilttjh"]
 
 [ext_resource type="Script" path="res://assets/scripts/MainStats/main_stats_menu_Logic.gd" id="1_rey2q"]
 [ext_resource type="Texture2D" uid="uid://xhnet7l88rwq" path="res://assets/sprites/UI/Status_Header.png" id="2_6ckol"]
+[ext_resource type="Shader" path="res://assets/shaders/HighLight_Shader.gdshader" id="2_ehi2l"]
 [ext_resource type="Texture2D" uid="uid://8fd0pmjmrepn" path="res://assets/sprites/UI/BG.png" id="2_fupjd"]
 [ext_resource type="PackedScene" uid="uid://b8hj7cokkvuox" path="res://assets/prefabs/Entity_Critic_UI.tscn" id="2_npwkf"]
 [ext_resource type="FontFile" uid="uid://dvex2p1l2cfg5" path="res://assets/fonts/mangatb.ttf" id="3_dhmu0"]
@@ -12,6 +13,50 @@
 [ext_resource type="Texture2D" uid="uid://dkcjnh3ovas3q" path="res://assets/sprites/UI/CreateCharacter_icon.png" id="10_gapfo"]
 [ext_resource type="PackedScene" uid="uid://d4m0qevbvi46r" path="res://assets/scenes/Mechanics_Scenes/Chapter_Maker_Scene.tscn" id="11_wo0bl"]
 [ext_resource type="Texture2D" uid="uid://dpwnn3anj5uq4" path="res://assets/sprites/UI/UI Question.png" id="12_7mi4r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_861nb"]
+shader = ExtResource("2_ehi2l")
+shader_parameter/density = 4.0
+shader_parameter/color1 = Color(0.95158, 0.95158, 0.95158, 1)
+shader_parameter/color2 = Color(0.743139, 0.78414, 0.916154, 1)
+
+[sub_resource type="Animation" id="Animation_lrb1y"]
+resource_name = "Bg"
+length = 20.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/density")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [4.0, 25.0]
+}
+
+[sub_resource type="Animation" id="Animation_cxll4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/density")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7to0k"]
+_data = {
+"Bg": SubResource("Animation_lrb1y"),
+"RESET": SubResource("Animation_cxll4")
+}
 
 [sub_resource type="Animation" id="Animation_s1bop"]
 resource_name = "CH_Maker_Enter"
@@ -26,7 +71,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0666667, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 727), Vector2(0, -26), Vector2(0, 0)]
+"values": [Vector2(0, 1257), Vector2(0, -26), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_svg1k"]
@@ -41,7 +86,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 727)]
+"values": [Vector2(0, 1305)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxfv0"]
@@ -56,10 +101,12 @@ script = ExtResource("1_rey2q")
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = 1.0
+offset_right = 1916.0
+offset_bottom = 1077.0
 
-[node name="Manga_Bg" type="ColorRect" parent="UI"]
+[node name="ColorRect" type="ColorRect" parent="UI"]
+material = SubResource("ShaderMaterial_861nb")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,27 +114,63 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Outline" type="TextureRect" parent="UI/Manga_Bg"]
+[node name="Label" type="Label" parent="UI/ColorRect"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1073.0
+offset_top = 61.0
+offset_right = 2036.0
+offset_bottom = 315.0
+rotation = 1.5708
+theme_override_colors/font_color = Color(0.188235, 0.254902, 0.431373, 0.180392)
+theme_override_fonts/font = ExtResource("4_fl1j6")
+theme_override_font_sizes/font_size = 120
+text = "MANGAKA LIFE
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_7to0k")
+}
+autoplay = "Bg"
+
+[node name="Outline" type="TextureRect" parent="UI/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_fupjd")
+
+[node name="Manga_Bg" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.074
+anchor_right = 0.922
+anchor_bottom = 1.0
+offset_left = -85.71
+offset_top = 30.0
+offset_right = 118.37
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.947199, 0.947199, 0.947199, 0.717647)
 
 [node name="Status" type="TextureRect" parent="UI/Manga_Bg"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -298.0
-offset_right = 680.0
+offset_top = -356.0
+offset_right = 812.0
 grow_vertical = 0
 texture = ExtResource("2_6ckol")
 
 [node name="Balance" type="RichTextLabel" parent="UI/Manga_Bg/Status"]
 layout_mode = 0
-offset_left = 7.0
+offset_left = 43.0
 offset_top = 58.0
-offset_right = 640.0
+offset_right = 676.0
 offset_bottom = 140.0
 theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/normal_font = ExtResource("4_fl1j6")
@@ -97,9 +180,9 @@ text = "Balance: 00$
 
 [node name="Reputation" type="RichTextLabel" parent="UI/Manga_Bg/Status"]
 layout_mode = 0
-offset_left = 7.0
+offset_left = 43.0
 offset_top = 132.0
-offset_right = 640.0
+offset_right = 676.0
 offset_bottom = 214.0
 theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/normal_font = ExtResource("4_fl1j6")
@@ -108,9 +191,9 @@ text = "Reputation: 00"
 
 [node name="Chapters_Wrote" type="RichTextLabel" parent="UI/Manga_Bg/Status"]
 layout_mode = 0
-offset_left = 7.0
+offset_left = 43.0
 offset_top = 203.0
-offset_right = 640.0
+offset_right = 676.0
 offset_bottom = 285.0
 theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/normal_font = ExtResource("4_fl1j6")
@@ -118,10 +201,14 @@ theme_override_font_sizes/normal_font_size = 50
 text = "Chapters Wrote: 00"
 
 [node name="Virality" type="TextureRect" parent="UI/Manga_Bg"]
-layout_mode = 0
-offset_left = 701.0
-offset_right = 1148.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -670.0
+offset_right = 1.0
+offset_bottom = 972.0
+grow_horizontal = 0
 texture = ExtResource("3_yo2dp")
 
 [node name="Critics_Holder" type="VBoxContainer" parent="UI/Manga_Bg/Virality"]
@@ -130,16 +217,15 @@ anchors_preset = -1
 anchor_left = 0.072
 anchor_right = 0.924
 anchor_bottom = 0.943
-offset_left = -0.184002
-offset_top = 37.0
-offset_right = -7.02802
-offset_bottom = -0.0640259
+offset_left = 1.688
+offset_top = 51.0
+offset_right = -8.00403
+offset_bottom = -9.59601
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 190
 
 [node name="Critic" parent="UI/Manga_Bg/Virality/Critics_Holder" instance=ExtResource("2_npwkf")]
-visible = false
 layout_mode = 2
 
 [node name="Critic2" parent="UI/Manga_Bg/Virality/Critics_Holder" instance=ExtResource("2_npwkf")]
@@ -152,8 +238,8 @@ layout_mode = 2
 
 [node name="Options" type="TextureRect" parent="UI/Manga_Bg"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 673.0
+offset_bottom = 293.0
 texture = ExtResource("7_bu1cm")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Manga_Bg/Options"]
@@ -163,8 +249,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 25.0
 offset_top = 8.0
-offset_right = -14.0
-offset_bottom = -43.0
+offset_right = -36.0
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 75
@@ -223,14 +309,23 @@ theme_override_fonts/normal_font = ExtResource("4_fl1j6")
 theme_override_font_sizes/normal_font_size = 50
 text = "Virality: None"
 
+[node name="TextureRect" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 336.0
+offset_right = 868.0
+offset_bottom = 633.0
+texture = ExtResource("7_bu1cm")
+
 [node name="virality_status" type="Label" parent="UI"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -78.0
-offset_right = 460.0
-offset_bottom = 12.0
+offset_left = 89.0
+offset_top = -160.5
+offset_right = 572.0
+offset_bottom = -70.5
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/font = ExtResource("4_fl1j6")
@@ -238,10 +333,27 @@ theme_override_font_sizes/font_size = 60
 text = "Virality None"
 vertical_alignment = 1
 
+[node name="virality_status2" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 89.0
+offset_top = -56.5
+offset_right = 572.0
+offset_bottom = 33.5
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
+theme_override_fonts/font = ExtResource("4_fl1j6")
+theme_override_font_sizes/font_size = 60
+text = "critics: 0"
+vertical_alignment = 1
+
 [node name="Chapter_Maker" parent="." instance=ExtResource("11_wo0bl")]
-position = Vector2(0, 727)
+position = Vector2(0, 1305)
 
 [node name="Notifications" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1175.0

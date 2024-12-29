@@ -141,23 +141,22 @@ script = ExtResource("1_r4jwf")
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 540.0
-offset_bottom = 960.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="Manga_Bg" type="ColorRect" parent="UI"]
 material = SubResource("ShaderMaterial_ov8mx")
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 2.133
-anchor_bottom = 0.675
-offset_right = 0.179932
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="UI/Manga_Bg"]
 layout_mode = 0
-offset_right = 1046.0
-offset_bottom = 253.0
+offset_right = 1604.0
+offset_bottom = 388.0
 texture = ExtResource("2_77832")
 
 [node name="Question_holder" type="GridContainer" parent="UI/Manga_Bg"]
@@ -166,8 +165,6 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 685.0
-offset_right = 0.00134277
-offset_bottom = 361.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2

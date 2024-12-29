@@ -10,6 +10,9 @@ extends Control
 @export var random_names = ["Alex", "Jordan", "Taylor", "Morgan", "Casey", "Riley"]
 @export var user_pic_folder = "res://assets/sprites/User pfps/"  # Ruta de la carpeta de imágenes
 
+func _init():
+	set_random_user_pic()
+	#user_opinion.text = good_opinions[randi() % good_opinions.size()]
 func set_critic_data(global_score: int, threshold: int, likes_higher: bool):
 	"""
 	Configura los datos del crítico: nombre, opinión y avatar.
