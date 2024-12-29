@@ -9,7 +9,7 @@ var current_question = 0
 var total_score = 0
 
 # Referencias a los nodos de la escena
-@onready var question_label = $UI/Manga_Bg/Question_Label
+@onready var question_label = $UI/Manga_Bg/TextureRect/Question_Label
 @onready var button_choice_one = $UI/Manga_Bg/Question_holder/button_choice_one
 @onready var button_choice_two = $UI/Manga_Bg/Question_holder/button_choice_two
 @onready var button_choice_three = $UI/Manga_Bg/Question_holder/button_choice_three

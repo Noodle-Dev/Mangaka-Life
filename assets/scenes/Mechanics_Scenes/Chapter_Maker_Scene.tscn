@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://assets/scripts/Chapter_Creation/chapter_buttons_creation_scene.gd" id="1_r4jwf"]
 [ext_resource type="Texture2D" uid="uid://dpwnn3anj5uq4" path="res://assets/sprites/UI/UI Question.png" id="2_2emy3"]
-[ext_resource type="Texture2D" uid="uid://d1tgqbo06s0mn" path="res://assets/sprites/UI/QuestionHolder.png" id="2_77832"]
 [ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="2_i71g3"]
 [ext_resource type="Shader" path="res://assets/shaders/bg_shader.gdshader" id="2_rh5ak"]
+[ext_resource type="Texture2D" uid="uid://cnrepagugekve" path="res://assets/sprites/UI/MiniGameHolder.png" id="3_4kagi"]
 [ext_resource type="FontFile" uid="uid://dvex2p1l2cfg5" path="res://assets/fonts/mangatb.ttf" id="4_k45dk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ov8mx"]
@@ -22,14 +22,14 @@ length = 0.2333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Question_Labelo:position")
+tracks/0/path = NodePath("TextureRect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(159.5, -238), Vector2(159.5, 90), Vector2(159.5, 81)]
+"values": [Vector2(160, -693), Vector2(160, 64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -38,15 +38,15 @@ tracks/1/path = NodePath("Question_holder:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 685), Vector2(0, 296), Vector2(0, 322)]
+"values": [Vector2(418, 1321), Vector2(418, 542)]
 }
 
 [sub_resource type="Animation" id="Animation_n56ls"]
 resource_name = "Finish"
-length = 0.12
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -54,10 +54,22 @@ tracks/0/path = NodePath("Result:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.0666667, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(342, 690), Vector2(342, 126)]
+"values": [Vector2(726, 1254), Vector2(726, 452), Vector2(726, 428)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.133333, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(160, 64), Vector2(160, 79), Vector2(160, 905)]
 }
 
 [sub_resource type="Animation" id="Animation_4rlna"]
@@ -66,26 +78,26 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Question_Labelo:position")
+tracks/0/path = NodePath("Question_holder:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(159.5, 68), Vector2(159.5, 81), Vector2(159.5, -240)]
+"values": [Vector2(418, 542), Vector2(418, 517), Vector2(418, 1227)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Question_holder:position")
+tracks/1/path = NodePath("TextureRect:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 322), Vector2(0, 311), Vector2(0, 847)]
+"values": [Vector2(158, 64), Vector2(160, 95), Vector2(160, -693)]
 }
 
 [sub_resource type="Animation" id="Animation_d5q4e"]
@@ -93,26 +105,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Question_Labelo:position")
+tracks/0/path = NodePath("Question_holder:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(159.5, 68)]
+"values": [Vector2(418, 542)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Question_holder:position")
+tracks/1/path = NodePath("TextureRect:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 685)]
+"values": [Vector2(158, 64)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -124,7 +136,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(342, 690)]
+"values": [Vector2(726, 1254)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0sgq"]
@@ -154,17 +166,50 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="UI/Manga_Bg"]
-layout_mode = 0
-offset_right = 1604.0
-offset_bottom = 388.0
-texture = ExtResource("2_77832")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -800.0
+offset_top = 365.0
+offset_right = 804.0
+offset_bottom = 753.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4kagi")
+
+[node name="Question_Label" type="RichTextLabel" parent="UI/Manga_Bg/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -524.5
+offset_top = -106.5
+offset_right = 524.5
+offset_bottom = 106.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
+theme_override_fonts/normal_font = ExtResource("2_i71g3")
+theme_override_font_sizes/normal_font_size = 61
+bbcode_enabled = true
+text = "[center]aaaa[/center]"
 
 [node name="Question_holder" type="GridContainer" parent="UI/Manga_Bg"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 685.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -542.0
+offset_top = 2.0
+offset_right = 542.0
+offset_bottom = 292.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
@@ -249,10 +294,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -416.5
-offset_top = -256.0
-offset_right = 416.5
-offset_bottom = -198.0
+offset_left = -800.5
+offset_top = -472.0
+offset_right = 32.5
+offset_bottom = -414.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
@@ -262,25 +307,6 @@ text = "Mangos Mangos Mangos"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Question_Label" type="RichTextLabel" parent="UI/Manga_Bg"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -518.0
-offset_top = -256.0
-offset_right = 531.0
-offset_bottom = -43.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/normal_font = ExtResource("2_i71g3")
-theme_override_font_sizes/normal_font_size = 61
-bbcode_enabled = true
-text = "[center]aaaa[/center]"
-
 [node name="Result" type="Label" parent="UI/Manga_Bg"]
 layout_mode = 1
 anchors_preset = 8
@@ -289,9 +315,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -234.0
-offset_top = 366.0
+offset_top = -112.0
 offset_right = 234.0
-offset_bottom = 472.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)

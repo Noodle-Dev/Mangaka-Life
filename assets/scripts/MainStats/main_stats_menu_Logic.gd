@@ -77,6 +77,7 @@ func _on_create_chapter_button_pressed():
 		transitions_panels.play("CH_Maker_Enter")
 		ChapterMakerPanel.initialize_quiz()
 	else:
+		transitions_panels.play("Money_Flash")
 		print("No tienes suficiente balance para crear un capítulo.")
 
 # Función para manejar el botón de creación de personajes
@@ -87,4 +88,5 @@ func _on_create_character_button_pressed():
 		transitions_panels.play("CHARAC_Maker_Enter")
 		ChapterMakerPanel.initialize_quiz()
 	else:
+		transitions_panels.play("Money_Flash")
 		print("No tienes suficiente balance para crear un personaje.")

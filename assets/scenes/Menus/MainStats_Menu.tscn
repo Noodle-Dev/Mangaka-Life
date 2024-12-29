@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b1goo2qilttjh"]
+[gd_scene load_steps=22 format=3 uid="uid://b1goo2qilttjh"]
 
 [ext_resource type="Script" path="res://assets/scripts/MainStats/main_stats_menu_Logic.gd" id="1_rey2q"]
 [ext_resource type="Texture2D" uid="uid://xhnet7l88rwq" path="res://assets/sprites/UI/Status_Header.png" id="2_6ckol"]
@@ -88,10 +88,39 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 1305)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Manga_Bg/Status/Balance:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_w1s68"]
+resource_name = "Money_Flash"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Manga_Bg/Status/Balance:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxfv0"]
 _data = {
 "CH_Maker_Enter": SubResource("Animation_s1bop"),
+"Money_Flash": SubResource("Animation_w1s68"),
 "RESET": SubResource("Animation_svg1k")
 }
 
@@ -212,6 +241,7 @@ grow_horizontal = 0
 texture = ExtResource("3_yo2dp")
 
 [node name="Critics_Holder" type="VBoxContainer" parent="UI/Manga_Bg/Virality"]
+clip_children = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.072
@@ -235,6 +265,13 @@ layout_mode = 2
 [node name="Critic3" parent="UI/Manga_Bg/Virality/Critics_Holder" instance=ExtResource("2_npwkf")]
 visible = false
 layout_mode = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="UI/Manga_Bg/Virality"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 59.0
+offset_right = 54.0
+offset_bottom = 67.0
 
 [node name="Options" type="TextureRect" parent="UI/Manga_Bg"]
 layout_mode = 0
