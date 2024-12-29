@@ -7,9 +7,9 @@ var forward = true
 
 func _ready():
 	# Guarda las posiciones en una lista al cargar la escena
-	move_points.append($"../Move_Points/Pos_1".position)
-	move_points.append($"../Move_Points/Pos_2".position)
-	move_points.append($"../Move_Points/Pos_3".position)
+	move_points.append($"../Pos_1".position)
+	move_points.append($"../Pos_2".position)
+	move_points.append($"../Pos_3".position)
 	position = move_points[current_index]
 	update_position_index()
 

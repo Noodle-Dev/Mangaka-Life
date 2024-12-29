@@ -33,7 +33,6 @@ func reset_criticism_timer():
 		criticism_timer.wait_time = randf_range(min_criticism_interval, max_criticism_interval)
 		criticism_timer.start()
 
-# Función conectada al temporizador
 func _on_criticism_timer_timeout():
 	# Verifica si hay al menos un capítulo escrito
 	if GlobalData.G_Chap_Wrote >= 1:
@@ -67,26 +66,27 @@ func generate_criticism():
 	else:
 		print("Error: 'criticObject' no es un PackedScene válido.")
 
+func adjust_balance(amount: int):
+	"""
+	Ajusta el balance global.
+	"""
+	GlobalData.G_Balance += amount
+	balance.text = "Balance: " + str(GlobalData.G_Balance) + "$"
+
 # Función para manejar el botón de creación de capítulos
 func _on_create_chapter_button_pressed():
 	if GlobalData.G_Balance >= 250:
-		GlobalData.G_Balance -= 250
-		balance.text = "Balance: " + str(GlobalData.G_Balance) + "$"
+		adjust_balance(-250)
 		GlobalData.G_Chap_Wrote += 1
 		chapters_wrote.text = "Chapters wrote: " + str(GlobalData.G_Chap_Wrote)
 		transitions_panels.play("CH_Maker_Enter")
 		ChapterMakerPanel.initialize_quiz()
 	else:
-		transitions_panels.play("Money_Flash")
 		print("No tienes suficiente balance para crear un capítulo.")
 
-# Función para manejar el botón de creación de personajes
 func _on_create_character_button_pressed():
 	if GlobalData.G_Balance >= 150:
-		GlobalData.G_Balance -= 150
-		balance.text = "Balance: " + str(GlobalData.G_Balance) + "$"
-		transitions_panels.play("CHARAC_Maker_Enter")
-		ChapterMakerPanel.initialize_quiz()
+		adjust_balance(-150)
+		transitions_panels.play("CH_Maker_Enter")
 	else:
-		transitions_panels.play("Money_Flash")
 		print("No tienes suficiente balance para crear un personaje.")

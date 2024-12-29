@@ -1,17 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://wkrhantia8yp"]
+[gd_scene load_steps=7 format=3 uid="uid://wkrhantia8yp"]
 
 [ext_resource type="Script" path="res://assets/scripts/Character_Creation/obstacle_moving.gd" id="1_cmbiw"]
-[ext_resource type="Texture2D" uid="uid://dkqtphmj3r3wl" path="res://icon.svg" id="2_7pmfk"]
+[ext_resource type="Texture2D" uid="uid://coe7q1aipfeur" path="res://assets/sprites/Minigames/Obstacle.png" id="2_t31hb"]
+
+[sub_resource type="Animation" id="Animation_rpusw"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.207413, 0.0, 0.207694, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_64aov"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ivmb0"]
+_data = {
+"Idle": SubResource("Animation_rpusw"),
+"RESET": SubResource("Animation_64aov")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbh2a"]
+size = Vector2(76, 64)
 
 [node name="Obstacle" type="Node2D"]
 script = ExtResource("1_cmbiw")
 
 [node name="Object" type="Sprite2D" parent="."]
-texture = ExtResource("2_7pmfk")
+texture = ExtResource("2_t31hb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Object"]
+libraries = {
+"": SubResource("AnimationLibrary_ivmb0")
+}
+autoplay = "Idle"
 
 [node name="Area2D" type="Area2D" parent="." groups=["obs"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_lbh2a")
 
 [node name="Timer" type="Timer" parent="."]
 

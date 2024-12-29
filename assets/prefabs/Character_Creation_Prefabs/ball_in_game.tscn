@@ -1,20 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://cu7kjinsqq10t"]
 
 [ext_resource type="Script" path="res://assets/scripts/Character_Creation/Ball_MiniGame_Player.gd" id="1_pacvw"]
-[ext_resource type="Texture2D" uid="uid://dkqtphmj3r3wl" path="res://icon.svg" id="2_f8yvy"]
+[ext_resource type="Texture2D" uid="uid://k4ec6t21bklm" path="res://assets/sprites/Minigames/OP_Fruit_Icon.png" id="2_f3lbe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kt2xy"]
+size = Vector2(37, 42)
 
 [node name="Ball_In_Game" type="CharacterBody2D"]
 script = ExtResource("1_pacvw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_f8yvy")
+position = Vector2(-4.5, 4.5)
+texture = ExtResource("2_f3lbe")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_kt2xy")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

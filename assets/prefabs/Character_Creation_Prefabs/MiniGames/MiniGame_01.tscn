@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt854pjj74s34"]
+
+[ext_resource type="Texture2D" uid="uid://d1tgqbo06s0mn" path="res://assets/sprites/UI/QuestionHolder.png" id="1_gdbjo"]
+[ext_resource type="Script" path="res://assets/scripts/Character_Creation/move_points_logic.gd" id="2_57vrg"]
+[ext_resource type="PackedScene" uid="uid://cu7kjinsqq10t" path="res://assets/prefabs/Character_Creation_Prefabs/ball_in_game.tscn" id="3_8xq4i"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.14902)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -756.0
+offset_top = -424.0
+offset_right = 757.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_gdbjo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(961, 842.905)
+scale = Vector2(1.43403, 1.43403)
+texture = ExtResource("1_gdbjo")
+
+[node name="Pos_1" type="Node2D" parent="."]
+position = Vector2(364, 733)
+
+[node name="Pos_2" type="Node2D" parent="."]
+position = Vector2(364, 832)
+
+[node name="Pos_3" type="Node2D" parent="."]
+position = Vector2(364, 931)
+
+[node name="Move_Points" type="Node2D" parent="."]
+position = Vector2(295, 733)
+
+[node name="Spawn" type="Node2D" parent="."]
+position = Vector2(1631, 733)
+script = ExtResource("2_57vrg")
+
+[node name="Obs_1" type="Node2D" parent="Spawn"]
+
+[node name="Obs_2" type="Node2D" parent="Spawn"]
+position = Vector2(0, 99)
+
+[node name="Obs_3" type="Node2D" parent="Spawn"]
+position = Vector2(0, 198)
+
+[node name="Ball_In_Game" parent="." instance=ExtResource("3_8xq4i")]
+position = Vector2(297, 731)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(961, 538)

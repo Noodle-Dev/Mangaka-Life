@@ -1,8 +1,8 @@
 extends Node2D
 
 
-var move_speed = 600
-var lifespan = 10
+var move_speed = 700
+var lifespan = 1
 
 func _physics_process(delta):
 	position.x -= move_speed * delta
