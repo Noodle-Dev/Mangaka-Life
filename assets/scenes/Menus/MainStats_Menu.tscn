@@ -59,6 +59,22 @@ _data = {
 "RESET": SubResource("Animation_cxll4")
 }
 
+[sub_resource type="Animation" id="Animation_qlxeu"]
+resource_name = "CHAP_Maker_Enter"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character_Maker_Scene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1284), Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_s1bop"]
 resource_name = "CH_Maker_Enter"
 length = 0.23
@@ -128,22 +144,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 1284)]
-}
-
-[sub_resource type="Animation" id="Animation_qlxeu"]
-resource_name = "CHAP_Maker_Enter"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Character_Maker_Scene:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1284), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxfv0"]
@@ -400,7 +400,7 @@ theme_override_font_sizes/font_size = 60
 text = "Virality None"
 vertical_alignment = 1
 
-[node name="virality_status2" type="Label" parent="UI"]
+[node name="NCritics" type="Label" parent="UI"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -420,8 +420,8 @@ vertical_alignment = 1
 position = Vector2(0, 1305)
 
 [node name="Character_Maker_Scene" parent="." instance=ExtResource("13_micli")]
-visible = false
 position = Vector2(0, 1284)
+microgameScenes = Array[PackedScene]([])
 
 [node name="Notifications" type="Control" parent="."]
 visible = false

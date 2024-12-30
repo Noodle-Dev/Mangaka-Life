@@ -18,6 +18,9 @@ shader_parameter/blur = 0.0
 script = ExtResource("1_6h1if")
 microgameScenes = Array[PackedScene]([ExtResource("2_7doxp")])
 
+[node name="MicroTimer" type="Timer" parent="."]
+wait_time = 10.0
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -53,8 +56,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MicroTimer" type="Timer" parent="."]
-wait_time = 10.0
 
 [connection signal="timeout" from="MicroTimer" to="." method="_on_micro_timer_timeout"]

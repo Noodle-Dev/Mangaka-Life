@@ -12,6 +12,9 @@ extends Node2D
 # Panels
 @onready var ChapterMakerPanel = $Chapter_Maker
 
+# Minijuegos
+@onready var minigames_node = $Character_Maker_Scene  # Ruta al nodo de los minijuegos
+
 # Objects
 @onready var critics_holder = $UI/Manga_Bg/Virality/Critics_Holder
 @export var criticObject: PackedScene = preload("res://assets/prefabs/Entity_Critic_UI.tscn")
@@ -25,6 +28,7 @@ extends Node2D
 
 func _ready():
 	# Configurar el temporizador al inicio
+	transitions_panels.play("RESET")
 	reset_criticism_timer()
 
 # Resetea y configura el temporizador con un intervalo aleatorio
@@ -87,6 +91,12 @@ func _on_create_chapter_button_pressed():
 func _on_create_character_button_pressed():
 	if GlobalData.G_Balance >= 150:
 		adjust_balance(-150)
-		transitions_panels.play("CH_Maker_Enter")
+		transitions_panels.play("CHAP_Maker_Enter")
+		
+		# Inicializa los minijuegos
+		if minigames_node and minigames_node.has_method("initialize_minigames"):
+			minigames_node.initialize_minigames()
+		else:
+			print("Error: Nodo de minijuegos no encontrado o no tiene el método 'initialize_minigames'.")
 	else:
 		print("No tienes suficiente balance para crear un personaje.")
