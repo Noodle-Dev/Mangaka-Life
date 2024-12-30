@@ -21,6 +21,7 @@ extends Node2D
 
 # Temporizador para críticas
 @onready var criticism_timer = $CriticismTimer
+@onready var NCritik = 0
 
 # Rango de tiempo para críticas (en segundos)
 @export var min_criticism_interval = 3
@@ -30,6 +31,7 @@ func _ready():
 	# Configurar el temporizador al inicio
 	transitions_panels.play("RESET")
 	reset_criticism_timer()
+	update_status()
 
 # Resetea y configura el temporizador con un intervalo aleatorio
 func reset_criticism_timer():
@@ -64,11 +66,61 @@ func generate_criticism():
 		# Añade el objeto al contenedor de críticas (critics_holder)
 		if critics_holder:
 			critics_holder.add_child(new_critic)
+			GlobalData.G_N_Critics =  GlobalData.G_N_Critics + 1
+			$UI/NCritics.text = "Critics: " + str(GlobalData.G_N_Critics)
+			update_status()
 			print("Crítico generado y añadido al contenedor de críticas.")
 		else:
 			print("Error: 'critics_holder' no está configurado o no es válido.")
 	else:
 		print("Error: 'criticObject' no es un PackedScene válido.")
+
+func update_status():
+	# Actualizar reputación basada en G_FinalScore
+	var score = GlobalData.G_FinalScore
+	var rep = 0
+	
+	if score < 20:
+		rep = 0
+	elif score < 40:
+		rep = 1
+	elif score < 60:
+		rep = 2
+	elif score < 80:
+		rep = 3
+	elif score < 90:
+		rep = 4
+	else:
+		rep = 5
+	
+	# Actualizar el texto de reputación
+	if reputation and reputation is RichTextLabel:
+		reputation.text = "Reputation: " + str(rep)
+	else:
+		print("Error: 'reputation' no está asignado o no es un RichTextLabel.")
+	
+	# Determinar el nivel de virality
+	var virality_text = ""
+	if rep == 0:
+		virality_text = "[b]Virality:[/b] None"
+	elif rep == 1:
+		virality_text = "[b]Virality:[/b] Some"
+	elif rep == 2:
+		virality_text = "[b]Virality:[/b] Kind of"
+	elif rep == 3:
+		virality_text = "[b]Virality:[/b] A lot"
+	elif rep == 4:
+		virality_text = "[b]Virality:[/b] Recognized"
+	elif rep == 5:
+		virality_text = "[b]Virality:[/b] Famous"
+	else:
+		virality_text = "[b]Virality:[/b] None"
+	
+	if virality_status and virality_status is RichTextLabel:
+		virality_status.text = virality_text
+	else:
+		print("Error: 'virality_status' no está asignado o no es un RichTextLabel.")
+
 
 func adjust_balance(amount: int):
 	"""
@@ -86,12 +138,14 @@ func _on_create_chapter_button_pressed():
 		transitions_panels.play("CH_Maker_Enter")
 		ChapterMakerPanel.initialize_quiz()
 	else:
+		transitions_panels.play("Money_Flash")
 		print("No tienes suficiente balance para crear un capítulo.")
 
 func _on_create_character_button_pressed():
 	if GlobalData.G_Balance >= 150:
 		adjust_balance(-150)
 		transitions_panels.play("CHAP_Maker_Enter")
+		$Character_Maker_Scene.start_microgame()
 		
 		# Inicializa los minijuegos
 		if minigames_node and minigames_node.has_method("initialize_minigames"):
@@ -99,4 +153,5 @@ func _on_create_character_button_pressed():
 		else:
 			print("Error: Nodo de minijuegos no encontrado o no tiene el método 'initialize_minigames'.")
 	else:
+		transitions_panels.play("Money_Flash")
 		print("No tienes suficiente balance para crear un personaje.")

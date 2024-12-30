@@ -6,9 +6,9 @@ extends Control
 @onready var user_pic = $User/UserPic  # TextureRect
 
 # Variables exportadas
-@export var good_opinions = ["¡Me encantó!", "Una obra maestra.", "Increíblemente creativo."]
-@export var bad_opinions = ["No es de mi agrado.", "Le falta algo.", "Demasiado simple."]
-@export var random_names = ["Alex", "Jordan", "Taylor", "Morgan", "Casey", "Riley"]
+@onready var good_opinions = GlobalData.G_good_opinions
+@onready var bad_opinions = GlobalData.G_bad_opinions
+@onready var random_names = GlobalData.G_random_names 
 @export var user_pic_folder = "res://assets/sprites/User pfps/"  # Ruta de la carpeta de imágenes
 
 # Umbral único del crítico
@@ -24,36 +24,41 @@ func _ready():
 	if user_pic == null:
 		print("Error: 'user_pic' es null. Verifica la ruta o el nodo.")
 
+	# Asignar un nombre aleatorio
+	assign_random_user_name()
+
+	# Asignar una imagen de perfil aleatoria
+	set_random_user_pic()
+
+	# Asignar una opinión inicial aleatoria (buena o mala)
+	assign_random_opinion()
+
 	# Generar un umbral único aleatorio
 	unique_threshold = randi() % 101
 
-func set_critic_data(global_score: int, threshold: int, likes_higher: bool):
-	unique_threshold = threshold
-
-	# Asignar nombre
+func assign_random_user_name():
+	"""
+	Asigna un nombre aleatorio al usuario.
+	"""
 	if user_name != null:
 		user_name.text = random_names[randi() % random_names.size()]
+		print("Nombre asignado:", user_name.text)
 	else:
 		print("Error: 'user_name' es null. No se pudo asignar un nombre.")
 
-	# Asignar opinión
+func assign_random_opinion():
+	"""
+	Asigna una opinión inicial aleatoria (buena o mala) al usuario.
+	"""
 	if user_opinion != null:
-		var is_good = (global_score >= unique_threshold) if likes_higher else (global_score <= unique_threshold)
+		var is_good = randf() < 0.5  # 50% de probabilidad de ser buena o mala
 		user_opinion.clear()
 		user_opinion.add_text(
 			good_opinions[randi() % good_opinions.size()] if is_good else bad_opinions[randi() % bad_opinions.size()]
 		)
-
-		# Modificar el balance global en función de la opinión
-		if is_good:
-			get_tree().call_group("Menu_grub", "adjust_balance", 300)
-		else:
-			get_tree().call_group("Menu_grub", "adjust_balance", -100)
+		print("Opinión asignada:", user_opinion.text)
 	else:
 		print("Error: 'user_opinion' es null. No se pudo asignar una opinión.")
-
-	# Asignar imagen
-	set_random_user_pic()
 
 func set_random_user_pic():
 	"""

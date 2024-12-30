@@ -1,12 +1,39 @@
 extends Node
+
+#Stats
 var G_Balance = 500
 var G_Reputation = 0
 var G_Chap_Wrote = 0
+var G_N_Critics = 0
 
 var G_FinalScore = 0
 
+#Opinions
+var G_good_opinions = [
+	"I loved it!", "A masterpiece.", "Incredibly creative.",
+	"Absolutely fantastic.", "Brilliant work!", "Highly enjoyable.",
+	"Exceeded expectations.", "Very impressive.", "Stunning effort.",
+	"Truly remarkable.", "Couldn't stop smiling!", "Top-notch quality."
+];
+
+var G_bad_opinions = [
+	"Not my cup of tea.", "It lacks something.", "Too simplistic.",
+	"Could use improvement.", "Not engaging enough.", "Fell flat for me.",
+	"Didn't meet expectations.", "A bit underwhelming.", "Missed the mark.",
+	"Needs more depth.", "Not what I expected.", "Disappointing overall."
+];
+
+var G_random_names = [
+	"Alex", "Jordan", "Taylor", "Morgan", "Casey", "Riley",
+	"Cameron", "Harper", "Quinn", "Drew", "Peyton", "Skyler",
+	"Blake", "Sawyer", "Rowan", "Logan", "Reese", "Avery",
+	"Emerson", "Charlie", "Finley", "Dakota", "Hayden", "Tatum",
+	"Elliot", "Lennox", "Jesse", "Micah", "Sage", "Phoenix","Noodle Dev"
+];
+
+#Questions
 var G_question_types = {
-	"manga_beginning": [
+	"manga_beginning": [ #Questions of the beggining
 		{
 			"text": "How does the journey begin?",
 			"options": {
@@ -16,7 +43,7 @@ var G_question_types = {
 				"Wandering aimlessly": -1
 			}
 		},
-		{
+		{ #Oppening scene settings
 			"text": "Opening scene setting?",
 			"options": {
 				"Dark city": 2,
@@ -25,7 +52,7 @@ var G_question_types = {
 				"Generic background": -2
 			}
 		},
-		{
+		{ #Protagonist setting
 			"text": "Protagonist's first emotion?",
 			"options": {
 				"Curiosity": 2,
@@ -35,7 +62,7 @@ var G_question_types = {
 			}
 		}
 	],
-	"manga_climax": [
+	"manga_climax": [ #Climax
 		{
 			"text": "Main conflict in climax?",
 			"options": {

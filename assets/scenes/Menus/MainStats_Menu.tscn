@@ -286,6 +286,7 @@ grow_vertical = 2
 theme_override_constants/separation = 190
 
 [node name="Critic" parent="UI/Manga_Bg/Virality/Critics_Holder" instance=ExtResource("2_npwkf")]
+visible = false
 layout_mode = 2
 
 [node name="Critic2" parent="UI/Manga_Bg/Virality/Critics_Holder" instance=ExtResource("2_npwkf")]
@@ -421,7 +422,6 @@ position = Vector2(0, 1305)
 
 [node name="Character_Maker_Scene" parent="." instance=ExtResource("13_micli")]
 position = Vector2(0, 1284)
-microgameScenes = Array[PackedScene]([])
 
 [node name="Notifications" type="Control" parent="."]
 visible = false
