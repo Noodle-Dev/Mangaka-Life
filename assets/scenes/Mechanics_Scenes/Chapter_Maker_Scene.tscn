@@ -173,9 +173,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -800.0
-offset_top = 365.0
+offset_top = -476.0
 offset_right = 804.0
-offset_bottom = 753.0
+offset_bottom = -88.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_4kagi")
@@ -315,25 +315,46 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -234.0
-offset_top = -112.0
-offset_right = 234.0
-offset_bottom = -6.0
+offset_top = 714.0
+offset_right = 355.0
+offset_bottom = 820.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/font = ExtResource("4_k45dk")
 theme_override_font_sizes/font_size = 51
-text = "Sacaste 0 pa"
+text = "Chapter Score 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="FinishMangaBtn" type="TextureButton" parent="UI/Manga_Bg/Result"]
-layout_mode = 0
-offset_left = -38.9999
-offset_top = 106.0
-offset_right = 501.0
-offset_bottom = 249.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = 52.0
+offset_right = 270.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("2_2emy3")
+
+[node name="Label" type="Label" parent="UI/Manga_Bg/Result/FinishMangaBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.211765, 0.262745, 0.458824, 1)
+theme_override_fonts/font = ExtResource("2_i71g3")
+theme_override_font_sizes/font_size = 51
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Questions_Transitions" type="AnimationPlayer" parent="UI/Manga_Bg"]
 libraries = {

@@ -234,7 +234,7 @@ offset_bottom = 140.0
 theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
 theme_override_fonts/normal_font = ExtResource("4_fl1j6")
 theme_override_font_sizes/normal_font_size = 50
-text = "Balance: 00$
+text = "Balance: 500$
 "
 
 [node name="Reputation" type="RichTextLabel" parent="UI/Manga_Bg/Status"]
@@ -365,18 +365,6 @@ theme_override_font_sizes/font_size = 15
 text = "Create New Character"
 vertical_alignment = 1
 
-[node name="virality_statusBLE" type="RichTextLabel" parent="UI"]
-visible = false
-layout_mode = 0
-offset_left = 15.0
-offset_top = 256.0
-offset_right = 648.0
-offset_bottom = 338.0
-theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
-theme_override_fonts/normal_font = ExtResource("4_fl1j6")
-theme_override_font_sizes/normal_font_size = 50
-text = "Virality: None"
-
 [node name="TextureRect" type="TextureRect" parent="UI"]
 layout_mode = 0
 offset_left = 59.0
@@ -386,6 +374,7 @@ offset_bottom = 633.0
 texture = ExtResource("7_bu1cm")
 
 [node name="virality_status" type="Label" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -400,6 +389,18 @@ theme_override_fonts/font = ExtResource("4_fl1j6")
 theme_override_font_sizes/font_size = 60
 text = "Virality None"
 vertical_alignment = 1
+
+[node name="virality_statusBLE" type="RichTextLabel" parent="UI"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 395.0
+offset_right = 848.0
+offset_bottom = 477.0
+theme_override_colors/default_color = Color(0.211765, 0.262745, 0.458824, 1)
+theme_override_fonts/normal_font = ExtResource("4_fl1j6")
+theme_override_font_sizes/normal_font_size = 55
+bbcode_enabled = true
+text = "Virality: None"
 
 [node name="NCritics" type="Label" parent="UI"]
 layout_mode = 1

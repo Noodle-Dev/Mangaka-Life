@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://sjsnsr8qvy2s"]
+
+[ext_resource type="Texture2D" uid="uid://d1tgqbo06s0mn" path="res://assets/sprites/UI/QuestionHolder.png" id="1_fjdkt"]
+[ext_resource type="Script" path="res://assets/scripts/Character_Creation/Bugs_Microgame.gd" id="2_ppia8"]
+[ext_resource type="PackedScene" uid="uid://bu3qdy1f3w6ey" path="res://assets/prefabs/Character_Creation_Prefabs/bug_objs.tscn" id="3_8y0p2"]
+
+[node name="Mini_3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.14902)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -756.0
+offset_top = -424.0
+offset_right = 757.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_fjdkt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("spawn_point_nodes")]
+position = Vector2(961, 842.905)
+scale = Vector2(1.43403, 1.43403)
+texture = ExtResource("1_fjdkt")
+script = ExtResource("2_ppia8")
+object_scenes = Array[PackedScene]([ExtResource("3_8y0p2")])
+spawn_point_nodes = [NodePath("Spawn_01"), NodePath("Spawn_02"), NodePath("Spawn_03"), NodePath("Spawn_04"), NodePath("Spawn_05"), NodePath("Spawn_06"), NodePath("Spawn_07"), NodePath("Spawn_08"), NodePath("Spawn_09")]
+
+[node name="Spawn_01" type="Node2D" parent="Sprite2D"]
+position = Vector2(-32.0774, -9.69647)
+
+[node name="Spawn_02" type="Node2D" parent="Sprite2D"]
+position = Vector2(-470.701, -81.522)
+
+[node name="Spawn_03" type="Node2D" parent="Sprite2D"]
+position = Vector2(-415.612, 56.5504)
+
+[node name="Spawn_04" type="Node2D" parent="Sprite2D"]
+position = Vector2(403.757, -86.4034)
+
+[node name="Spawn_05" type="Node2D" parent="Sprite2D"]
+position = Vector2(135.98, -71.062)
+
+[node name="Spawn_06" type="Node2D" parent="Sprite2D"]
+position = Vector2(-237.094, -60.602)
+
+[node name="Spawn_07" type="Node2D" parent="Sprite2D"]
+position = Vector2(-249.646, 37.7223)
+
+[node name="Spawn_08" type="Node2D" parent="Sprite2D"]
+position = Vector2(393.995, 57.2477)
+
+[node name="Spawn_09" type="Node2D" parent="Sprite2D"]
+position = Vector2(153.414, 60.0371)

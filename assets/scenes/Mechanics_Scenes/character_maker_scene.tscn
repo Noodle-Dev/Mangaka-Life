@@ -1,11 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0wjcxb8tro7v"]
+[gd_scene load_steps=17 format=3 uid="uid://c0wjcxb8tro7v"]
 
 [ext_resource type="Script" path="res://assets/scripts/Character_Creation/Character_Creation_Minigames.gd" id="1_6h1if"]
 [ext_resource type="Shader" path="res://assets/shaders/bg_shader.gdshader" id="1_d2pm7"]
 [ext_resource type="PackedScene" uid="uid://dt854pjj74s34" path="res://assets/prefabs/Character_Creation_Prefabs/MiniGames/MiniGame_01.tscn" id="2_7doxp"]
+[ext_resource type="PackedScene" uid="uid://dpgex1o5bjag6" path="res://assets/prefabs/Character_Creation_Prefabs/MiniGames/MiniGame_02.tscn" id="3_oh4ju"]
 [ext_resource type="Texture2D" uid="uid://bgfyam1qx11ee" path="res://assets/sprites/Minigames/CharacterHolder/Mid.png" id="4_50vjl"]
+[ext_resource type="PackedScene" uid="uid://sjsnsr8qvy2s" path="res://assets/prefabs/Character_Creation_Prefabs/MiniGames/MiniGame_03.tscn" id="4_qo0cs"]
 [ext_resource type="Texture2D" uid="uid://va0b7kfg2j6n" path="res://assets/sprites/Minigames/CharacterHolder/Ugly_Char.png" id="4_yojif"]
 [ext_resource type="Texture2D" uid="uid://bhid55uyilw45" path="res://assets/sprites/Minigames/CharacterHolder/Well Done.png" id="5_2i477"]
+[ext_resource type="Texture2D" uid="uid://cnrepagugekve" path="res://assets/sprites/UI/MiniGameHolder.png" id="7_gup4o"]
+[ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="8_001h7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ejshx"]
 shader = ExtResource("1_d2pm7")
@@ -21,41 +25,86 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/ColorRect:position")
+tracks/0/path = NodePath("UI/TextureRect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-2041, 260)]
+"values": [Vector2(-1257, 371.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_p6gya"]
 resource_name = "Start_mini"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.7, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1257, 371.5), Vector2(409, 371.5), Vector2(396, 371.5), Vector2(396, 371.5), Vector2(385, 371.5), Vector2(2085, 371.5)]
+}
+
+[sub_resource type="Animation" id="Animation_nv31y"]
+resource_name = "Win"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/ColorRect:position")
+tracks/0/path = NodePath("UI/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-2041, 260), Vector2(0, 260), Vector2(0, 260), Vector2(2044, 260)]
+"values": [Color(1, 1, 1, 0), Color(0.313726, 0.733333, 0, 0.537255), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vcc26"]
+resource_name = "Lose"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.827451, 0, 0, 0), Color(0.835718, 1.73271e-06, 4.81307e-07, 0.67451), Color(0.835294, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y47ou"]
 _data = {
+"Lose": SubResource("Animation_vcc26"),
 "RESET": SubResource("Animation_4n8e1"),
-"Start_mini": SubResource("Animation_p6gya")
+"Start_mini": SubResource("Animation_p6gya"),
+"Win": SubResource("Animation_nv31y")
 }
 
 [node name="Character_Maker_Scene" type="Node2D" groups=["charMaker"]]
 script = ExtResource("1_6h1if")
-microgame_scenes = Array[PackedScene]([ExtResource("2_7doxp")])
+microgame_scenes = Array[PackedScene]([ExtResource("2_7doxp"), ExtResource("3_oh4ju"), ExtResource("4_qo0cs")])
 state_textures = Array[Texture2D]([ExtResource("5_2i477"), ExtResource("4_50vjl"), ExtResource("4_yojif")])
 
 [node name="MicroTimer" type="Timer" parent="."]
@@ -97,18 +146,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI"]
+[node name="TextureRect" type="TextureRect" parent="UI"]
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 2044.0
-offset_top = -280.0
-offset_right = 2044.0
-offset_bottom = 92.0
+offset_left = -2216.5
+offset_top = -168.5
+offset_right = -1089.5
+offset_bottom = 168.5
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("7_gup4o")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/TextureRect"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 29.0
+offset_right = 1111.0
+offset_bottom = 312.0
+theme_override_colors/default_color = Color(0.188235, 0.262745, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("8_001h7")
+theme_override_font_sizes/normal_font_size = 101
+bbcode_enabled = true
+text = "[center][shake rate=20.0 level=5 connected=1]{Create the character!}[/shake][/center]"
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

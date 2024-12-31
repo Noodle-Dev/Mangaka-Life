@@ -1,4 +1,16 @@
-[gd_scene format=3 uid="uid://dpgex1o5bjag6"]
+[gd_scene load_steps=8 format=3 uid="uid://dpgex1o5bjag6"]
+
+[ext_resource type="Texture2D" uid="uid://d1tgqbo06s0mn" path="res://assets/sprites/UI/QuestionHolder.png" id="1_vehch"]
+[ext_resource type="Texture2D" uid="uid://b68nept0p4cex" path="res://assets/sprites/Minigames/Pen.png" id="2_3dvev"]
+[ext_resource type="Script" path="res://assets/scripts/Character_Creation/Pen_Obj_Logic.gd" id="3_jlhde"]
+[ext_resource type="Texture2D" uid="uid://d2jne04h6500j" path="res://assets/sprites/Minigames/Book.png" id="4_y7tgn"]
+[ext_resource type="Script" path="res://assets/prefabs/Character_Creation_Prefabs/MiniGames/book_Obj_Logic.gd" id="5_cxfnd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2k22h"]
+size = Vector2(40, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xo5v"]
+size = Vector2(90, 92)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -7,3 +19,82 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.14902)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -756.0
+offset_top = -424.0
+offset_right = 757.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_vehch")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(961, 842.905)
+scale = Vector2(1.43403, 1.43403)
+texture = ExtResource("1_vehch")
+
+[node name="Pen" type="Sprite2D" parent="." node_paths=PackedStringArray("patrol_point_a_node", "patrol_point_b_node")]
+position = Vector2(1018, 735)
+texture = ExtResource("2_3dvev")
+script = ExtResource("3_jlhde")
+patrol_point_a_node = NodePath("../A")
+patrol_point_b_node = NodePath("../B")
+
+[node name="Area2D" type="Area2D" parent="Pen"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pen/Area2D"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_2k22h")
+
+[node name="Book" type="Sprite2D" parent="." node_paths=PackedStringArray("flag_points")]
+position = Vector2(267, 942)
+texture = ExtResource("4_y7tgn")
+script = ExtResource("5_cxfnd")
+flag_points = [NodePath("../B2"), NodePath("../B3"), NodePath("../B4"), NodePath("../B5"), NodePath("../B6"), NodePath("../B7"), NodePath("../B8")]
+
+[node name="Area2D" type="Area2D" parent="Book" groups=["goal"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Book/Area2D"]
+position = Vector2(-2, -3)
+shape = SubResource("RectangleShape2D_1xo5v")
+
+[node name="A" type="Node2D" parent="."]
+position = Vector2(1589, 733)
+
+[node name="B" type="Node2D" parent="."]
+position = Vector2(262, 733)
+
+[node name="B2" type="Node2D" parent="."]
+position = Vector2(266, 942)
+
+[node name="B3" type="Node2D" parent="."]
+position = Vector2(449, 942)
+
+[node name="B4" type="Node2D" parent="."]
+position = Vector2(691, 942)
+
+[node name="B5" type="Node2D" parent="."]
+position = Vector2(977, 942)
+
+[node name="B6" type="Node2D" parent="."]
+position = Vector2(1209, 942)
+
+[node name="B7" type="Node2D" parent="."]
+position = Vector2(1384, 942)
+
+[node name="B8" type="Node2D" parent="."]
+position = Vector2(1598, 942)
+
+[node name="pureya" type="Timer" parent="."]
+wait_time = 9.0
+
+[connection signal="area_entered" from="Pen/Area2D" to="Pen" method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="pureya" to="Pen" method="_on_pureya_timeout"]

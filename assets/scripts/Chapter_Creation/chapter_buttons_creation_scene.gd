@@ -90,7 +90,7 @@ func finalize_quiz():
 	button_choice_two.visible = false
 	button_choice_three.visible = false
 	button_choice_four.visible = false
-	result_label.text = "Tu puntuación total es: %d" % total_score
+	result_label.text = "Chapter Score: %d" % total_score
 	GlobalData.G_FinalScore = GlobalData.G_FinalScore + total_score
 	transition_animation.play("Finish")
 

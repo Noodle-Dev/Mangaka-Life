@@ -4,7 +4,7 @@ extends Node2D
 @onready var balance = $UI/Manga_Bg/Status/Balance
 @onready var reputation = $UI/Manga_Bg/Status/Reputation
 @onready var chapters_wrote = $UI/Manga_Bg/Status/Chapters_Wrote
-@onready var virality_status = $UI/Manga_Bg/Status/Virality_Status
+@onready var virality_status = $UI/virality_statusBLE
 
 # Animations
 @onready var transitions_panels = $Transitions_Panels
@@ -122,15 +122,15 @@ func update_status():
 func calculate_virality() -> String:
 	var score = GlobalData.G_FinalScore
 	if score > 80:
-		return "Virality: [b]Extremely High[/b]"
+		return "Virality: [shake rate=50.0 level=5 connected=1]{Extremely High}[/shake]"
 	elif score > 60:
-		return "Virality: [b]High[/b]"
+		return "Virality: [shake rate=40.0 level=5 connected=1]{High}[/shake]"
 	elif score > 40:
-		return "Virality: [b]Moderate[/b]"
+		return "Virality: [shake rate=30.0 level=5 connected=1]{Moderate}[/shake]"
 	elif score > 20:
-		return "Virality: [b]Low[/b]"
+		return "Virality: [shake rate=20.0 level=5 connected=1]{Low}[/shake]"
 	else:
-		return "Virality: [b]None[/b]"
+		return "Virality: [shake rate=10.0 level=5 connected=1]{None}[/shake]"
 
 func adjust_balance(amount: int):
 	"""

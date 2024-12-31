@@ -51,6 +51,9 @@ func degradate_character():
 		character_state.texture = state_textures[current_state_index]
 		# Aumenta el índice para cambiar a la siguiente textura en la siguiente llamada
 		current_state_index += 1
+		$AnimationPlayer.play("Lose")
 		# Si el índice excede el tamaño del array, lo reinicia
 		if current_state_index >= state_textures.size():
 			current_state_index = 0
+func generate_character():
+	$AnimationPlayer.play("Win")

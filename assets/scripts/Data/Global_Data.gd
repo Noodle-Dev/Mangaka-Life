@@ -13,15 +13,35 @@ var G_good_opinions = [
 	"I loved it!", "A masterpiece.", "Incredibly creative.",
 	"Absolutely fantastic.", "Brilliant work!", "Highly enjoyable.",
 	"Exceeded expectations.", "Very impressive.", "Stunning effort.",
-	"Truly remarkable.", "Couldn't stop smiling!", "Top-notch quality."
+	"Truly remarkable.", "Couldn't stop smiling!", "Top-notch quality.",
+	"Beautifully executed.", "Pure genius!", "Heartwarming and fun.",
+	"Engaging from start to finish.", "Perfectly crafted.", 
+	"A delightful experience.", "Simply unforgettable.", 
+	"Full of charm and wit.", "A true gem.", 
+	"Left me wanting more.", "Fantastic storytelling."
 ];
 
 var G_bad_opinions = [
 	"Not my cup of tea.", "It lacks something.", "Too simplistic.",
 	"Could use improvement.", "Not engaging enough.", "Fell flat for me.",
 	"Didn't meet expectations.", "A bit underwhelming.", "Missed the mark.",
-	"Needs more depth.", "Not what I expected.", "Disappointing overall."
+	"Needs more depth.", "Not what I expected.", "Disappointing overall.",
+	"Uninspired execution.", "Lacked originality.", "Felt rushed.",
+	"Hard to follow.", "Too predictable.", "Lacking emotional impact.",
+	"Overhyped and underdelivered.", "Failed to connect with me.",
+	"Needed more polish.", "Dull and unmemorable.", 
+	"Didn't capture my interest.", "A complete disaster.", 
+	"Painfully boring.", "Borderline unwatchable.", "Offensively bad.",
+	"Embarrassingly amateurish.", "A trainwreck from start to finish.",
+	"Utterly soulless.", "Makes no sense whatsoever.",
+	"Cringeworthy at every turn.", "A waste of time and effort.",
+	"Horribly executed.", "Unbearably tedious.", 
+	"As enjoyable as watching paint dry.", "Infuriatingly bad.",
+	"Left me questioning my life choices.", "Insulting to the audience.",
+	"A masterclass in how not to do it.", "An absolute mess.",
+	"Worse than I could have imagined."
 ];
+
 
 var G_random_names = [
 	"Alex", "Jordan", "Taylor", "Morgan", "Casey", "Riley",
@@ -33,7 +53,7 @@ var G_random_names = [
 
 #Questions
 var G_question_types = {
-	"manga_beginning": [ #Questions of the beggining
+	"manga_beginning": [
 		{
 			"text": "How does the journey begin?",
 			"options": {
@@ -43,7 +63,7 @@ var G_question_types = {
 				"Wandering aimlessly": -1
 			}
 		},
-		{ #Oppening scene settings
+		{
 			"text": "Opening scene setting?",
 			"options": {
 				"Dark city": 2,
@@ -52,7 +72,7 @@ var G_question_types = {
 				"Generic background": -2
 			}
 		},
-		{ #Protagonist setting
+		{
 			"text": "Protagonist's first emotion?",
 			"options": {
 				"Curiosity": 2,
@@ -60,9 +80,27 @@ var G_question_types = {
 				"Fear": 0,
 				"Apathy": -1
 			}
+		},
+		{
+			"text": "First challenge faced?",
+			"options": {
+				"Overcoming fear": 2,
+				"Helping someone": 1,
+				"Personal failure": 0,
+				"Nothing significant": -2
+			}
+		},
+		{
+			"text": "What drives the protagonist?",
+			"options": {
+				"Revenge": 1,
+				"Discovery": 2,
+				"Survival": 1,
+				"Lack of purpose": -1
+			}
 		}
 	],
-	"manga_climax": [ #Climax
+	"manga_climax": [
 		{
 			"text": "Main conflict in climax?",
 			"options": {
@@ -88,6 +126,24 @@ var G_question_types = {
 				"Reveals truth": 2,
 				"Challenges hero": 3,
 				"Easy to defeat": -1
+			}
+		},
+		{
+			"text": "Impact of climax on story?",
+			"options": {
+				"Reveals hidden truths": 3,
+				"Alters relationships": 2,
+				"Changes little": 0,
+				"Feels pointless": -3
+			}
+		},
+		{
+			"text": "Climax environment?",
+			"options": {
+				"Unique and memorable": 3,
+				"Dangerous and tense": 2,
+				"Common setting": 0,
+				"Forgettable location": -2
 			}
 		}
 	],
@@ -118,6 +174,24 @@ var G_question_types = {
 				"Inspiration": 1,
 				"Confusion": -2
 			}
+		},
+		{
+			"text": "Secondary themes?",
+			"options": {
+				"Well-integrated": 3,
+				"Occasionally present": 2,
+				"Not explored enough": 0,
+				"Contradict the story": -2
+			}
+		},
+		{
+			"text": "Theme complexity?",
+			"options": {
+				"Multi-layered": 3,
+				"Clear and focused": 2,
+				"Simple but effective": 1,
+				"Overly simplistic": -1
+			}
 		}
 	],
 	"manga_message": [
@@ -146,6 +220,24 @@ var G_question_types = {
 				"Reflective": 2,
 				"Inspired": 1,
 				"Disappointed": -3
+			}
+		},
+		{
+			"text": "How does the story inspire?",
+			"options": {
+				"Through the hero's growth": 3,
+				"Overcoming challenges": 2,
+				"Subtle hints": 1,
+				"Lacks inspiration": -2
+			}
+		},
+		{
+			"text": "Does the message last?",
+			"options": {
+				"Profoundly impactful": 3,
+				"Memorable": 2,
+				"Briefly felt": 1,
+				"Easily forgotten": -3
 			}
 		}
 	],
@@ -176,6 +268,24 @@ var G_question_types = {
 				"Key moments": 1,
 				"Overused": -1
 			}
+		},
+		{
+			"text": "Narrative twists?",
+			"options": {
+				"Unpredictable and clever": 3,
+				"Well-timed": 2,
+				"Occasional": 1,
+				"Nonexistent": -2
+			}
+		},
+		{
+			"text": "Chapter transitions?",
+			"options": {
+				"Seamless": 3,
+				"Effective": 2,
+				"Adequate": 1,
+				"Jarring": -2
+			}
 		}
 	]
-}
+};
