@@ -39,8 +39,6 @@ func _ready():
 
 func _process(delta):
 	update_status(
-		
-		
 	)
 # Resetea y configura el temporizador con un intervalo aleatorio
 func reset_criticism_timer():
