@@ -27,12 +27,21 @@ extends Node2D
 @export var min_criticism_interval = 3
 @export var max_criticism_interval = 10
 
+# Variables de reputación y viralidad
+var good_critiques = 0
+var bad_critiques = 0
+
 func _ready():
 	# Configurar el temporizador al inicio
 	transitions_panels.play("RESET")
 	reset_criticism_timer()
 	update_status()
 
+func _process(delta):
+	update_status(
+		
+		
+	)
 # Resetea y configura el temporizador con un intervalo aleatorio
 func reset_criticism_timer():
 	if criticism_timer:
@@ -66,7 +75,20 @@ func generate_criticism():
 		# Añade el objeto al contenedor de críticas (critics_holder)
 		if critics_holder:
 			critics_holder.add_child(new_critic)
-			GlobalData.G_N_Critics =  GlobalData.G_N_Critics + 1
+			GlobalData.G_N_Critics = GlobalData.G_N_Critics + 1
+			
+			# Determinar si la crítica es positiva o negativa
+			if likes_higher and GlobalData.G_FinalScore >= random_threshold:
+				good_critiques += 1
+			elif not likes_higher and GlobalData.G_FinalScore <= random_threshold:
+				good_critiques += 1
+			else:
+				bad_critiques += 1
+			
+			# Limitar la cantidad de críticas a 5
+			if critics_holder.get_child_count() > 5:
+				critics_holder.get_child(0).queue_free()
+			
 			$UI/NCritics.text = "Critics: " + str(GlobalData.G_N_Critics)
 			update_status()
 			print("Crítico generado y añadido al contenedor de críticas.")
@@ -76,51 +98,41 @@ func generate_criticism():
 		print("Error: 'criticObject' no es un PackedScene válido.")
 
 func update_status():
-	# Actualizar reputación basada en G_FinalScore
-	var score = GlobalData.G_FinalScore
-	var rep = 0
-	
-	if score < 20:
-		rep = 0
-	elif score < 40:
-		rep = 1
-	elif score < 60:
-		rep = 2
-	elif score < 80:
-		rep = 3
-	elif score < 90:
-		rep = 4
+	# Calcular reputación basada en buenas críticas
+	var total_critiques = good_critiques + bad_critiques
+	var reputation_text = ""
+	if total_critiques > 0:
+		var reputation_percent = (good_critiques / float(total_critiques)) * 100
+		reputation_text = "Reputation: " + str(int(reputation_percent)) + "%"
 	else:
-		rep = 5
-	
-	# Actualizar el texto de reputación
+		reputation_text = "Reputation: 0%"
+
+	# Actualizar texto de reputación
 	if reputation and reputation is RichTextLabel:
-		reputation.text = "Reputation: " + str(rep)
+		reputation.text = reputation_text
 	else:
 		print("Error: 'reputation' no está asignado o no es un RichTextLabel.")
-	
-	# Determinar el nivel de virality
-	var virality_text = ""
-	if rep == 0:
-		virality_text = "[b]Virality:[/b] None"
-	elif rep == 1:
-		virality_text = "[b]Virality:[/b] Some"
-	elif rep == 2:
-		virality_text = "[b]Virality:[/b] Kind of"
-	elif rep == 3:
-		virality_text = "[b]Virality:[/b] A lot"
-	elif rep == 4:
-		virality_text = "[b]Virality:[/b] Recognized"
-	elif rep == 5:
-		virality_text = "[b]Virality:[/b] Famous"
-	else:
-		virality_text = "[b]Virality:[/b] None"
-	
+
+	# Determinar viralidad basada en el puntaje final
+	var virality_text = calculate_virality()
 	if virality_status and virality_status is RichTextLabel:
 		virality_status.text = virality_text
 	else:
 		print("Error: 'virality_status' no está asignado o no es un RichTextLabel.")
 
+# Calcula el nivel de viralidad basado en el puntaje total
+func calculate_virality() -> String:
+	var score = GlobalData.G_FinalScore
+	if score > 80:
+		return "Virality: [b]Extremely High[/b]"
+	elif score > 60:
+		return "Virality: [b]High[/b]"
+	elif score > 40:
+		return "Virality: [b]Moderate[/b]"
+	elif score > 20:
+		return "Virality: [b]Low[/b]"
+	else:
+		return "Virality: [b]None[/b]"
 
 func adjust_balance(amount: int):
 	"""

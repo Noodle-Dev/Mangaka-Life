@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0wjcxb8tro7v"]
+[gd_scene load_steps=11 format=3 uid="uid://c0wjcxb8tro7v"]
 
 [ext_resource type="Script" path="res://assets/scripts/Character_Creation/Character_Creation_Minigames.gd" id="1_6h1if"]
 [ext_resource type="Shader" path="res://assets/shaders/bg_shader.gdshader" id="1_d2pm7"]
 [ext_resource type="PackedScene" uid="uid://dt854pjj74s34" path="res://assets/prefabs/Character_Creation_Prefabs/MiniGames/MiniGame_01.tscn" id="2_7doxp"]
+[ext_resource type="Texture2D" uid="uid://bgfyam1qx11ee" path="res://assets/sprites/Minigames/CharacterHolder/Mid.png" id="4_50vjl"]
 [ext_resource type="Texture2D" uid="uid://va0b7kfg2j6n" path="res://assets/sprites/Minigames/CharacterHolder/Ugly_Char.png" id="4_yojif"]
+[ext_resource type="Texture2D" uid="uid://bhid55uyilw45" path="res://assets/sprites/Minigames/CharacterHolder/Well Done.png" id="5_2i477"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ejshx"]
 shader = ExtResource("1_d2pm7")
@@ -13,6 +15,21 @@ shader_parameter/angle = 130.59
 shader_parameter/line_count = 10.0
 shader_parameter/speed = 2.0
 shader_parameter/blur = 0.0
+
+[sub_resource type="Animation" id="Animation_4n8e1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2041, 260)]
+}
 
 [sub_resource type="Animation" id="Animation_p6gya"]
 resource_name = "Start_mini"
@@ -30,30 +47,16 @@ tracks/0/keys = {
 "values": [Vector2(-2041, 260), Vector2(0, 260), Vector2(0, 260), Vector2(2044, 260)]
 }
 
-[sub_resource type="Animation" id="Animation_4n8e1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI/ColorRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-2041, 260)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y47ou"]
 _data = {
 "RESET": SubResource("Animation_4n8e1"),
 "Start_mini": SubResource("Animation_p6gya")
 }
 
-[node name="Character_Maker_Scene" type="Node2D"]
+[node name="Character_Maker_Scene" type="Node2D" groups=["charMaker"]]
 script = ExtResource("1_6h1if")
 microgame_scenes = Array[PackedScene]([ExtResource("2_7doxp")])
+state_textures = Array[Texture2D]([ExtResource("5_2i477"), ExtResource("4_50vjl"), ExtResource("4_yojif")])
 
 [node name="MicroTimer" type="Timer" parent="."]
 wait_time = 10.0
@@ -73,7 +76,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI"]
+[node name="charStat" type="TextureRect" parent="UI"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -84,7 +87,7 @@ offset_bottom = 716.0
 grow_horizontal = 2
 scale = Vector2(0.685, 0.685)
 pivot_offset = Vector2(765.5, 354)
-texture = ExtResource("4_yojif")
+texture = ExtResource("5_2i477")
 
 [node name="MicroGameHolder" type="Control" parent="UI"]
 layout_mode = 1

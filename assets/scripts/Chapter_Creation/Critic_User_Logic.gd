@@ -15,6 +15,7 @@ extends Control
 var unique_threshold: int = 0
 
 func _ready():
+	get_tree().call_group("menu_grub", "update_status")
 	# Depuración para verificar nodos
 	print_tree()  # Imprime la estructura completa del árbol para confirmar las rutas
 	if user_name == null:
@@ -49,14 +50,27 @@ func assign_random_user_name():
 func assign_random_opinion():
 	"""
 	Asigna una opinión inicial aleatoria (buena o mala) al usuario.
+	Si la opinión es buena, añade un número aleatorio entre 50 y 100 al balance global con una probabilidad del 50%.
 	"""
 	if user_opinion != null:
 		var is_good = randf() < 0.5  # 50% de probabilidad de ser buena o mala
 		user_opinion.clear()
-		user_opinion.add_text(
-			good_opinions[randi() % good_opinions.size()] if is_good else bad_opinions[randi() % bad_opinions.size()]
-		)
+		var opinion_text = ""
+		
+		# Asignar la opinión dependiendo si es buena o mala
+		if is_good:
+			opinion_text = good_opinions[randi() % good_opinions.size()]
+		else:
+			opinion_text = bad_opinions[randi() % bad_opinions.size()]
+
+		user_opinion.add_text(opinion_text)
 		print("Opinión asignada:", user_opinion.text)
+
+		# Si la opinión es buena, con un 50% de probabilidad, añadimos un valor aleatorio entre 50 y 100 al balance
+		if is_good and randf() < 0.5:  # 50% de probabilidad
+			var bonus = randi() % 101 + 100  # Número aleatorio entre 50 y 100
+			GlobalData.G_Balance += bonus
+			print("Se ha añadido ", bonus, " al balance global. Nuevo balance: ", GlobalData.G_Balance)
 	else:
 		print("Error: 'user_opinion' es null. No se pudo asignar una opinión.")
 

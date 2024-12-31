@@ -35,7 +35,8 @@ func update_position_index():
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("obs"):
 		#get_tree().call_group("Menu_grub", "call_lose_minigame", 25)
-		#get_tree().call_group("Menu_grub", "losing_animation")
+		get_tree().call_group("charMaker", "degradate_character")
+		GlobalData.G_Reputation = GlobalData.G_Reputation - 20
 		print("alv")
 
 
