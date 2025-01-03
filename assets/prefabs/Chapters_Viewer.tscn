@@ -1,0 +1,120 @@
+[gd_scene load_steps=5 format=3 uid="uid://ytibql8edrfb"]
+
+[ext_resource type="Texture2D" uid="uid://djj4jkshl6n1r" path="res://assets/sprites/UI/Comments.png" id="1_645l8"]
+[ext_resource type="Script" path="res://assets/scripts/Chapter_Creation/Chapter_Views.gd" id="1_d2vld"]
+[ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="2_x4iok"]
+[ext_resource type="Texture2D" uid="uid://cnrepagugekve" path="res://assets/sprites/UI/MiniGameHolder.png" id="3_hwg8i"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_d2vld")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1081.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.270588)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -919.0
+offset_top = -507.5
+offset_right = -218.0
+offset_bottom = 507.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_645l8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.073
+anchor_top = 0.146
+anchor_right = 0.923
+anchor_bottom = 0.935
+offset_left = -0.173004
+offset_top = -0.190018
+offset_right = -0.0230103
+offset_bottom = -0.0250854
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/TextureRect"]
+layout_mode = 0
+offset_left = 63.5
+offset_top = 69.0
+offset_right = 626.5
+offset_bottom = 139.0
+theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
+theme_override_fonts/font = ExtResource("2_x4iok")
+theme_override_font_sizes/font_size = 60
+text = "Chapters Wrote"
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1165.0
+offset_top = 81.0
+offset_right = -38.0
+offset_bottom = 418.0
+grow_horizontal = 0
+texture = ExtResource("3_hwg8i")
+
+[node name="Manga Name" type="Label" parent="Control/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
+theme_override_fonts/font = ExtResource("2_x4iok")
+theme_override_font_sizes/font_size = 60
+text = "Manga Name : 00x1230"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1119.0
+offset_top = -607.0
+offset_right = 8.0
+offset_bottom = -270.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.88, 0.88)
+texture_normal = ExtResource("3_hwg8i")
+
+[node name="Manga Name2" type="Label" parent="Control/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
+theme_override_fonts/font = ExtResource("2_x4iok")
+theme_override_font_sizes/font_size = 60
+text = "CREATE NEW CHAPTER!"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,4 +1,6 @@
 extends Node
+var G_Manga_Name = ""
+
 
 #Stats
 var G_Balance = 500
