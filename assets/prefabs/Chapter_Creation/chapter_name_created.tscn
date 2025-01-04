@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0ay1quve4qwg"]
+[gd_scene load_steps=3 format=3 uid="uid://d0ay1quve4qwg"]
 
 [ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="1_i4rdj"]
+[ext_resource type="Script" path="res://assets/scripts/Chapter_Creation/CH_Label_Assigner_Logic.gd" id="2_chdec"]
 
-[node name="Chapter_Name_Created" type="Label"]
+[node name="chapter_name_Created" type="Label" groups=["Ch_Name"]]
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_i4rdj")
 theme_override_font_sizes/font_size = 45
 text = "Chapter_Name_PlaceHolder"
+script = ExtResource("2_chdec")

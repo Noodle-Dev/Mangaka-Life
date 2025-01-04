@@ -21,6 +21,7 @@ func _on_appear_panel_quest_pressed():
 	else:
 		$"../Transitions_Panels".play("CH_Maker_Enter")
 		$"../Chapter_Maker".initialize_quiz()
+		get_tree().call_group("Ch_Name", "AssignChapterName", chapter_namer.text)
 		self.visible = false
 		print("Error: No se encontró el nodo 'Chapter_Name_Created' en la instancia.")
 	
