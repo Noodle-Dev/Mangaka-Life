@@ -145,8 +145,9 @@ func _on_create_chapter_button_pressed():
 		adjust_balance(-250)
 		GlobalData.G_Chap_Wrote += 1
 		chapters_wrote.text = "Chapters wrote: " + str(GlobalData.G_Chap_Wrote)
-		transitions_panels.play("CH_Maker_Enter")
-		ChapterMakerPanel.initialize_quiz()
+		$Node2D.visible = true
+		#transitions_panels.play("CH_Maker_Enter")
+		#ChapterMakerPanel.initialize_quiz()
 	else:
 		transitions_panels.play("Money_Flash")
 		print("No tienes suficiente balance para crear un capítulo.")

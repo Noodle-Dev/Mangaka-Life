@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ytibql8edrfb"]
+[gd_scene load_steps=6 format=3 uid="uid://ytibql8edrfb"]
 
 [ext_resource type="Texture2D" uid="uid://djj4jkshl6n1r" path="res://assets/sprites/UI/Comments.png" id="1_645l8"]
 [ext_resource type="Script" path="res://assets/scripts/Chapter_Creation/Chapter_Views.gd" id="1_d2vld"]
 [ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="2_x4iok"]
 [ext_resource type="Texture2D" uid="uid://cnrepagugekve" path="res://assets/sprites/UI/MiniGameHolder.png" id="3_hwg8i"]
+[ext_resource type="Texture2D" uid="uid://dpwnn3anj5uq4" path="res://assets/sprites/UI/UI Question.png" id="5_hbca3"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_d2vld")
@@ -89,7 +90,7 @@ text = "Manga Name : 00x1230"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="Control"]
+[node name="Create_Chap" type="TextureButton" parent="Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -105,7 +106,7 @@ grow_vertical = 0
 scale = Vector2(0.88, 0.88)
 texture_normal = ExtResource("3_hwg8i")
 
-[node name="Manga Name2" type="Label" parent="Control/TextureButton"]
+[node name="Manga Name2" type="Label" parent="Control/Create_Chap"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,3 +119,93 @@ theme_override_font_sizes/font_size = 60
 text = "CREATE NEW CHAPTER!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Chapter_NameCreation" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.592157)
+
+[node name="TextureRect3" type="TextureRect" parent="Control/Chapter_NameCreation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -563.5
+offset_top = -168.5
+offset_right = 563.5
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_hwg8i")
+
+[node name="Manga Name" type="Label" parent="Control/Chapter_NameCreation/TextureRect3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -381.5
+offset_top = 25.0
+offset_right = 381.5
+offset_bottom = 95.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
+theme_override_fonts/font = ExtResource("2_x4iok")
+theme_override_font_sizes/font_size = 60
+text = "Chapter name:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chapter_Namer" type="LineEdit" parent="Control/Chapter_NameCreation/TextureRect3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.243
+anchor_top = 0.469
+anchor_right = 0.765
+anchor_bottom = 0.605
+offset_left = 0.138977
+offset_top = -0.053009
+offset_right = -0.155029
+offset_bottom = 0.11499
+theme_override_fonts/font = ExtResource("2_x4iok")
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Your new Chapter name here!"
+caret_blink = true
+
+[node name="AppearPanel_Quest" type="TextureButton" parent="Control/Chapter_NameCreation/TextureRect3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -95.0
+offset_right = 270.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_hbca3")
+
+[node name="Manga Name2" type="Label" parent="Control/Chapter_NameCreation/TextureRect3/AppearPanel_Quest"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
+theme_override_fonts/font = ExtResource("2_x4iok")
+theme_override_font_sizes/font_size = 60
+text = "Create"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/Create_Chap" to="." method="_on_create_chap_pressed"]
+[connection signal="pressed" from="Control/Chapter_NameCreation/TextureRect3/AppearPanel_Quest" to="." method="_on_appear_panel_quest_pressed"]
