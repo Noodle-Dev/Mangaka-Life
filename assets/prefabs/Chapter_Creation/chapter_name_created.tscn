@@ -6,7 +6,7 @@
 [node name="chapter_name_Created" type="Label" groups=["Ch_Name"]]
 offset_right = 40.0
 offset_bottom = 23.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
 theme_override_fonts/font = ExtResource("1_i4rdj")
 theme_override_font_sizes/font_size = 45
 text = "Chapter_Name_PlaceHolder"

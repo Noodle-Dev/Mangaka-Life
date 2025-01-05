@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b1goo2qilttjh"]
+[gd_scene load_steps=26 format=3 uid="uid://b1goo2qilttjh"]
 
 [ext_resource type="Script" path="res://assets/scripts/MainStats/main_stats_menu_Logic.gd" id="1_rey2q"]
 [ext_resource type="Texture2D" uid="uid://xhnet7l88rwq" path="res://assets/sprites/UI/Status_Header.png" id="2_6ckol"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d4m0qevbvi46r" path="res://assets/scenes/Mechanics_Scenes/Chapter_Maker_Scene.tscn" id="11_wo0bl"]
 [ext_resource type="Texture2D" uid="uid://dpwnn3anj5uq4" path="res://assets/sprites/UI/UI Question.png" id="12_7mi4r"]
 [ext_resource type="PackedScene" uid="uid://c0wjcxb8tro7v" path="res://assets/scenes/Mechanics_Scenes/character_maker_scene.tscn" id="13_micli"]
+[ext_resource type="PackedScene" uid="uid://b7dyiity5a1j0" path="res://assets/prefabs/Character_viewer.tscn" id="13_q0sha"]
 [ext_resource type="PackedScene" uid="uid://ytibql8edrfb" path="res://assets/prefabs/Chapters_Viewer.tscn" id="15_c45c0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_861nb"]
@@ -419,6 +420,12 @@ theme_override_font_sizes/font_size = 60
 text = "critics: 0"
 vertical_alignment = 1
 
+[node name="Chap_Viewer" parent="." instance=ExtResource("15_c45c0")]
+visible = false
+
+[node name="Char_Viewer" parent="." instance=ExtResource("13_q0sha")]
+visible = false
+
 [node name="Chapter_Maker" parent="." instance=ExtResource("11_wo0bl")]
 position = Vector2(0, 1305)
 
@@ -447,9 +454,6 @@ autoplay = "RESET"
 
 [node name="CriticismTimer" type="Timer" parent="."]
 wait_time = 5.0
-
-[node name="Node2D" parent="." instance=ExtResource("15_c45c0")]
-visible = false
 
 [node name="Manga_Name" type="Control" parent="."]
 visible = false

@@ -1,0 +1,236 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7dyiity5a1j0"]
+
+[ext_resource type="Script" path="res://assets/scripts/Character_Creation/Chapter_Creation_Viewer_Logic.gd" id="1_rawpv"]
+[ext_resource type="Shader" path="res://assets/shaders/bg_shader.gdshader" id="3_phfqb"]
+[ext_resource type="Texture2D" uid="uid://djj4jkshl6n1r" path="res://assets/sprites/UI/Comments.png" id="4_8dhkq"]
+[ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="5_jfbyq"]
+[ext_resource type="Texture2D" uid="uid://cnrepagugekve" path="res://assets/sprites/UI/MiniGameHolder.png" id="6_oxyc6"]
+[ext_resource type="Shader" path="res://assets/shaders/wavy_shader.gdshader" id="7_4nmx8"]
+[ext_resource type="Texture2D" uid="uid://dpwnn3anj5uq4" path="res://assets/sprites/UI/UI Question.png" id="8_8v7kl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmfwo"]
+shader = ExtResource("3_phfqb")
+shader_parameter/color_one = Color(1, 1, 1, 1)
+shader_parameter/color_two = Color(0.572609, 0.661398, 0.856381, 1)
+shader_parameter/angle = 43.58
+shader_parameter/line_count = 65.0
+shader_parameter/speed = 2.0
+shader_parameter/blur = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdh8k"]
+shader = ExtResource("7_4nmx8")
+shader_parameter/waveAmplitude = 0.046
+shader_parameter/correctVertex = true
+shader_parameter/waveFrequency = 63.704
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 5.63
+shader_parameter/progress = 1.0
+shader_parameter/firstHalf = 0.398
+shader_parameter/secondHalf = 0.5
+shader_parameter/freezeFirstHalf = false
+shader_parameter/freezeSecondHalf = false
+
+[node name="Char_Viewer" type="Node2D"]
+script = ExtResource("1_rawpv")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1081.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_wmfwo")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.270588)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -919.0
+offset_top = -507.5
+offset_right = -218.0
+offset_bottom = 507.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_8dhkq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.073
+anchor_top = 0.146
+anchor_right = 0.923
+anchor_bottom = 0.935
+offset_left = -0.173004
+offset_top = -0.190018
+offset_right = -0.0230103
+offset_bottom = -0.0250854
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/TextureRect"]
+layout_mode = 0
+offset_left = 63.5
+offset_top = 69.0
+offset_right = 626.5
+offset_bottom = 139.0
+theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
+theme_override_fonts/font = ExtResource("5_jfbyq")
+theme_override_font_sizes/font_size = 60
+text = "Chapters Wrote"
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1165.0
+offset_top = 81.0
+offset_right = -38.0
+offset_bottom = 418.0
+grow_horizontal = 0
+texture = ExtResource("6_oxyc6")
+
+[node name="Manga Name" type="Label" parent="Control/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
+theme_override_fonts/font = ExtResource("5_jfbyq")
+theme_override_font_sizes/font_size = 60
+text = "Manga Name : 00x1230"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Create_Chap" type="TextureButton" parent="Control"]
+material = SubResource("ShaderMaterial_fdh8k")
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1119.0
+offset_top = -607.0
+offset_right = 8.0
+offset_bottom = -270.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.88, 0.88)
+texture_normal = ExtResource("6_oxyc6")
+
+[node name="Manga Name2" type="Label" parent="Control/Create_Chap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
+theme_override_fonts/font = ExtResource("5_jfbyq")
+theme_override_font_sizes/font_size = 85
+text = "CREATE NEW CHAPTER!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chapter_NameCreation" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27451)
+
+[node name="TextureRect3" type="TextureRect" parent="Control/Chapter_NameCreation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -563.5
+offset_top = -168.5
+offset_right = 563.5
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_oxyc6")
+
+[node name="Manga Name" type="Label" parent="Control/Chapter_NameCreation/TextureRect3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -381.5
+offset_top = 25.0
+offset_right = 381.5
+offset_bottom = 95.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
+theme_override_fonts/font = ExtResource("5_jfbyq")
+theme_override_font_sizes/font_size = 60
+text = "Chapter name:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chapter_Namer" type="LineEdit" parent="Control/Chapter_NameCreation/TextureRect3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.243
+anchor_top = 0.469
+anchor_right = 0.765
+anchor_bottom = 0.605
+offset_left = 0.138977
+offset_top = -0.053009
+offset_right = -0.155029
+offset_bottom = 0.11499
+theme_override_fonts/font = ExtResource("5_jfbyq")
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Your new Chapter name here!"
+caret_blink = true
+
+[node name="AppearPanel_Quest" type="TextureButton" parent="Control/Chapter_NameCreation/TextureRect3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -95.0
+offset_right = 270.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("8_8v7kl")
+
+[node name="Manga Name2" type="Label" parent="Control/Chapter_NameCreation/TextureRect3/AppearPanel_Quest"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
+theme_override_fonts/font = ExtResource("5_jfbyq")
+theme_override_font_sizes/font_size = 60
+text = "Create"
+horizontal_alignment = 1
+vertical_alignment = 1

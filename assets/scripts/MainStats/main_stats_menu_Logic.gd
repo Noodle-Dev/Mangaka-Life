@@ -38,8 +38,8 @@ func _ready():
 	update_status()
 
 func _process(delta):
-	update_status(
-	)
+	update_status()
+
 # Resetea y configura el temporizador con un intervalo aleatorio
 func reset_criticism_timer():
 	if criticism_timer:
@@ -145,7 +145,7 @@ func _on_create_chapter_button_pressed():
 		adjust_balance(-250)
 		GlobalData.G_Chap_Wrote += 1
 		chapters_wrote.text = "Chapters wrote: " + str(GlobalData.G_Chap_Wrote)
-		$Node2D.visible = true
+		$Chap_Viewer.visible = true
 		#transitions_panels.play("CH_Maker_Enter")
 		#ChapterMakerPanel.initialize_quiz()
 	else:

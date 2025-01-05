@@ -1,6 +1,6 @@
 extends Label
 
-func AssignChapterName(Ch_Name : String):
-	var chapter_str = Ch_Name
-	$".".text = str(chapter_str)
-	print("Changed name succesfully")
+func AssignChapterName(target_node: Node, Ch_Name : String):
+	if self == target_node:
+		$".".text = Ch_Name
+		print("Changed name successfully")
