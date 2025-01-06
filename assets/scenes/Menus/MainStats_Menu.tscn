@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b1goo2qilttjh"]
+[gd_scene load_steps=29 format=3 uid="uid://b1goo2qilttjh"]
 
 [ext_resource type="Script" path="res://assets/scripts/MainStats/main_stats_menu_Logic.gd" id="1_rey2q"]
 [ext_resource type="Texture2D" uid="uid://xhnet7l88rwq" path="res://assets/sprites/UI/Status_Header.png" id="2_6ckol"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://c0wjcxb8tro7v" path="res://assets/scenes/Mechanics_Scenes/character_maker_scene.tscn" id="13_micli"]
 [ext_resource type="PackedScene" uid="uid://b7dyiity5a1j0" path="res://assets/prefabs/Character_viewer.tscn" id="13_q0sha"]
 [ext_resource type="PackedScene" uid="uid://ytibql8edrfb" path="res://assets/prefabs/Chapters_Viewer.tscn" id="15_c45c0"]
+[ext_resource type="Script" path="res://assets/scripts/MainMenu/Manga_Namer.gd" id="17_b0na8"]
+[ext_resource type="Shader" path="res://assets/shaders/bg_shader.gdshader" id="17_hdejx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_861nb"]
 shader = ExtResource("2_ehi2l")
@@ -156,6 +158,15 @@ _data = {
 "RESET": SubResource("Animation_svg1k")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ljy8h"]
+shader = ExtResource("17_hdejx")
+shader_parameter/color_one = Color(1, 1, 1, 1)
+shader_parameter/color_two = Color(0.877003, 0.9048, 0.963636, 1)
+shader_parameter/angle = 131.01
+shader_parameter/line_count = 100.0
+shader_parameter/speed = 3.0
+shader_parameter/blur = null
+
 [node name="Main_Stats_Menu" type="Node2D" groups=["menu_grub"]]
 script = ExtResource("1_rey2q")
 
@@ -273,13 +284,14 @@ grow_horizontal = 0
 texture = ExtResource("3_yo2dp")
 
 [node name="Critics_Holder" type="VBoxContainer" parent="UI/Manga_Bg/Virality"]
+visible = false
 clip_children = 1
+clip_contents = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.072
 anchor_right = 0.924
 anchor_bottom = 0.943
-offset_left = 1.688
+offset_left = 53.0
 offset_top = 51.0
 offset_right = -8.00403
 offset_bottom = -9.59601
@@ -288,23 +300,33 @@ grow_vertical = 2
 theme_override_constants/separation = 190
 
 [node name="Critic" parent="UI/Manga_Bg/Virality/Critics_Holder" instance=ExtResource("2_npwkf")]
-visible = false
+layout_mode = 2
+
+[node name="Critic5" parent="UI/Manga_Bg/Virality/Critics_Holder" instance=ExtResource("2_npwkf")]
 layout_mode = 2
 
 [node name="Critic2" parent="UI/Manga_Bg/Virality/Critics_Holder" instance=ExtResource("2_npwkf")]
-visible = false
 layout_mode = 2
 
-[node name="Critic3" parent="UI/Manga_Bg/Virality/Critics_Holder" instance=ExtResource("2_npwkf")]
-visible = false
-layout_mode = 2
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Manga_Bg/Virality"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.041
+anchor_right = 0.909
+anchor_bottom = 0.937
+offset_left = 0.0299988
+offset_top = 13.148
+offset_right = 0.0609741
+offset_bottom = 0.235962
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
-[node name="VScrollBar" type="VScrollBar" parent="UI/Manga_Bg/Virality"]
-layout_mode = 0
-offset_left = 46.0
-offset_top = 59.0
-offset_right = 54.0
-offset_bottom = 67.0
+[node name="Critic_Hold" type="VBoxContainer" parent="UI/Manga_Bg/Virality/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 190
 
 [node name="Options" type="TextureRect" parent="UI/Manga_Bg"]
 layout_mode = 0
@@ -456,13 +478,14 @@ autoplay = "RESET"
 wait_time = 5.0
 
 [node name="Manga_Name" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1081.0
+script = ExtResource("17_b0na8")
 
 [node name="ColorRect" type="ColorRect" parent="Manga_Name"]
+material = SubResource("ShaderMaterial_ljy8h")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -472,19 +495,19 @@ grow_vertical = 2
 
 [node name="LineEdit" type="LineEdit" parent="Manga_Name/ColorRect"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -451.0
-offset_top = -105.5
-offset_right = -296.0
-offset_bottom = -74.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(6, 6)
-placeholder_text = "Manga Name"
+anchors_preset = -1
+anchor_left = 0.243
+anchor_top = 0.469
+anchor_right = 0.765
+anchor_bottom = 0.605
+offset_left = 0.138977
+offset_top = -50.989
+offset_right = -0.155029
+offset_bottom = -50.821
+theme_override_fonts/font = ExtResource("4_fl1j6")
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Your manga name here!"
+caret_blink = true
 
 [node name="Manga Name" type="Label" parent="Manga_Name/ColorRect"]
 layout_mode = 1
@@ -498,11 +521,41 @@ offset_bottom = 395.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
 theme_override_fonts/font = ExtResource("4_fl1j6")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 90
 text = "Give your manga a Name!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Manga_Name/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = 121.5
+offset_right = 270.0
+offset_bottom = 264.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("12_7mi4r")
+
+[node name="Label" type="Label" parent="Manga_Name/ColorRect/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
+theme_override_fonts/font = ExtResource("4_fl1j6")
+theme_override_font_sizes/font_size = 66
+text = "CREATE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="UI/Manga_Bg/Options/HBoxContainer/CreateChapter_button" to="." method="_on_create_chapter_button_pressed"]
 [connection signal="pressed" from="UI/Manga_Bg/Options/HBoxContainer/Create_Character_Button" to="." method="_on_create_character_button_pressed"]
 [connection signal="timeout" from="CriticismTimer" to="." method="_on_criticism_timer_timeout"]
+[connection signal="pressed" from="Manga_Name/ColorRect/TextureButton" to="Manga_Name" method="_on_texture_button_pressed"]

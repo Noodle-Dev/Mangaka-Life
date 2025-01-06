@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="Mangaka-Life"
+config/version="1.0"
+run/main_scene="res://assets/scenes/Menus/Main_Menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://Mangaka_Life_Icon.png"
 
 [autoload]
 

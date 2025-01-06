@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b7dyiity5a1j0"]
 
-[ext_resource type="Script" path="res://assets/scripts/Character_Creation/Chapter_Creation_Viewer_Logic.gd" id="1_rawpv"]
+[ext_resource type="Script" path="res://assets/scripts/Character_Creation/Character_Creation_Viewer_Logic.gd" id="1_rawpv"]
 [ext_resource type="Shader" path="res://assets/shaders/bg_shader.gdshader" id="3_phfqb"]
 [ext_resource type="Texture2D" uid="uid://djj4jkshl6n1r" path="res://assets/sprites/UI/Comments.png" id="4_8dhkq"]
 [ext_resource type="FontFile" uid="uid://svjf1m8quja6" path="res://assets/fonts/mangat.ttf" id="5_jfbyq"]
@@ -125,10 +125,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1119.0
+offset_left = -1089.0
 offset_top = -607.0
-offset_right = 8.0
-offset_bottom = -270.0
+offset_right = 133.0
+offset_bottom = -242.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.88, 0.88)
@@ -136,15 +136,16 @@ texture_normal = ExtResource("6_oxyc6")
 
 [node name="Manga Name2" type="Label" parent="Control/Create_Chap"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 0.908
 anchor_bottom = 1.0
+offset_right = 0.42395
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
 theme_override_fonts/font = ExtResource("5_jfbyq")
-theme_override_font_sizes/font_size = 85
-text = "CREATE NEW CHAPTER!"
+theme_override_font_sizes/font_size = 80
+text = "CREATE new Character"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -186,7 +187,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0.188235, 0.262745, 0.439216, 1)
 theme_override_fonts/font = ExtResource("5_jfbyq")
 theme_override_font_sizes/font_size = 60
-text = "Chapter name:"
+text = "Character name:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -203,7 +204,7 @@ offset_right = -0.155029
 offset_bottom = 0.11499
 theme_override_fonts/font = ExtResource("5_jfbyq")
 theme_override_font_sizes/font_size = 40
-placeholder_text = "Your new Chapter name here!"
+placeholder_text = "Your new Character name here!"
 caret_blink = true
 
 [node name="AppearPanel_Quest" type="TextureButton" parent="Control/Chapter_NameCreation/TextureRect3"]
@@ -234,3 +235,6 @@ theme_override_font_sizes/font_size = 60
 text = "Create"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Control/Create_Chap" to="." method="_on_create_chap_pressed"]
+[connection signal="pressed" from="Control/Chapter_NameCreation/TextureRect3/AppearPanel_Quest" to="." method="_on_appear_panel_quest_pressed"]

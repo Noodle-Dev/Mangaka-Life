@@ -16,7 +16,7 @@ extends Node2D
 @onready var minigames_node = $Character_Maker_Scene  # Ruta al nodo de los minijuegos
 
 # Objects
-@onready var critics_holder = $UI/Manga_Bg/Virality/Critics_Holder
+@onready var critics_holder = $UI/Manga_Bg/Virality/ScrollContainer/Critic_Hold
 @export var criticObject: PackedScene = preload("res://assets/prefabs/Entity_Critic_UI.tscn")
 
 # Temporizador para críticas
@@ -30,6 +30,10 @@ extends Node2D
 # Variables de reputación y viralidad
 var good_critiques = 0
 var bad_critiques = 0
+
+#Asignar nombres
+@onready var MangaNamer = $Manga_Name/ColorRect/LineEdit
+
 
 func _ready():
 	# Configurar el temporizador al inicio
@@ -50,6 +54,7 @@ func _on_criticism_timer_timeout():
 	# Verifica si hay al menos un capítulo escrito
 	if GlobalData.G_Chap_Wrote >= 1:
 		generate_criticism()
+		$UI/Manga_Bg/Virality/ScrollContainer.scroll_vertical = $UI/Manga_Bg/Virality/ScrollContainer.get_v_scroll_bar().max_value
 	else:
 		print("No hay capítulos escritos. No se generarán críticas.")
 
@@ -133,9 +138,6 @@ func calculate_virality() -> String:
 		return "Virality: [shake rate=10.0 level=5 connected=1]{None}[/shake]"
 
 func adjust_balance(amount: int):
-	"""
-	Ajusta el balance global.
-	"""
 	GlobalData.G_Balance += amount
 	balance.text = "Balance: " + str(GlobalData.G_Balance) + "$"
 
@@ -155,9 +157,7 @@ func _on_create_chapter_button_pressed():
 func _on_create_character_button_pressed():
 	if GlobalData.G_Balance >= 150:
 		adjust_balance(-150)
-		transitions_panels.play("CHAP_Maker_Enter")
-		$Character_Maker_Scene.start_microgame()
-		
+		$Char_Viewer.visible = true
 		# Inicializa los minijuegos
 		if minigames_node and minigames_node.has_method("initialize_minigames"):
 			minigames_node.initialize_minigames()

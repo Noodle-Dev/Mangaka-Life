@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0graby35l32p"
-path="res://.godot/imported/lockIcon.png-788755d0ce12379d7e13322d78d1ae87.ctex"
+uid="uid://ba55us7w2lpgy"
+path="res://.godot/imported/Mangaka_Life_Icon.png-949e5db23e59abe6643f84ac991bb61e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/UI_Icons/lockIcon.png"
-dest_files=["res://.godot/imported/lockIcon.png-788755d0ce12379d7e13322d78d1ae87.ctex"]
+source_file="res://Mangaka_Life_Icon.png"
+dest_files=["res://.godot/imported/Mangaka_Life_Icon.png-949e5db23e59abe6643f84ac991bb61e.ctex"]
 
 [params]
 
