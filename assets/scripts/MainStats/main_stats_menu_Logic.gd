@@ -127,13 +127,13 @@ func update_status():
 # Calcula el nivel de viralidad basado en el puntaje total
 func calculate_virality() -> String:
 	var score = GlobalData.G_FinalScore
-	if score > 80:
+	if score > 2500:
 		return "Virality: [shake rate=50.0 level=5 connected=1]{Extremely High}[/shake]"
-	elif score > 60:
+	elif score > 1200:
 		return "Virality: [shake rate=40.0 level=5 connected=1]{High}[/shake]"
-	elif score > 40:
+	elif score > 500:
 		return "Virality: [shake rate=30.0 level=5 connected=1]{Moderate}[/shake]"
-	elif score > 20:
+	elif score > 100:
 		return "Virality: [shake rate=20.0 level=5 connected=1]{Low}[/shake]"
 	else:
 		return "Virality: [shake rate=10.0 level=5 connected=1]{None}[/shake]"

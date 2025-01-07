@@ -1,5 +1,5 @@
 extends Node2D
-#Personajes
+#characters
 var names_Obj = preload("res://assets/prefabs/Chapter_Creation/chapter_name_created.tscn")
 @onready var names_list = $Control/TextureRect/VBoxContainer
 @onready var chapter_namer = $Control/Chapter_NameCreation/TextureRect3/Chapter_Namer

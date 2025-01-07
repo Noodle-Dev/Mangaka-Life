@@ -1,6 +1,6 @@
 extends Node2D
 
-# Variables para almacenar las preguntas clasificadas por tipos
+#Global variables for the uuestion types
 var question_types = GlobalData.G_question_types
 
 
@@ -8,7 +8,7 @@ var questions = []
 var current_question = 0
 var total_score = 0
 
-# Referencias a los nodos de la escena
+#cene node references
 @onready var question_label = $UI/Manga_Bg/TextureRect/Question_Label
 @onready var button_choice_one = $UI/Manga_Bg/Question_holder/button_choice_one
 @onready var button_choice_two = $UI/Manga_Bg/Question_holder/button_choice_two
@@ -17,38 +17,33 @@ var total_score = 0
 @onready var result_label = $UI/Manga_Bg/Result
 @onready var transition_animation = $UI/Manga_Bg/Questions_Transitions
 
-func _ready():
-	# Llama a la función de inicialización del cuestionario
-	pass
-	#initialize_quiz()
-
-# Inicializa el cuestionario
+#Init quiz
 func initialize_quiz():
 	current_question = 0
 	total_score = 0
 	questions.clear()
-	# Selecciona una pregunta aleatoria de cada tipo
+	# Select random question from every type of question
 	for type in question_types.keys():
 		questions.append(question_types[type][randi() % question_types[type].size()])
 	questions.shuffle()
-	# Carga la primera pregunta
+	# LOad first question
 	if questions.size() > 0:
 		load_question()
 	else:
 		question_label.text = "No se encontraron preguntas."
 
-# Carga la pregunta actual
+# Load actual question
 func load_question():
 	if current_question < questions.size():
-		# Carga el texto de la pregunta
+		# Loads text from  the question
 		question_label.text = questions[current_question]["text"]
 		transition_animation.play("Enter")
 		
-		# Obtiene las opciones actuales
+		# Gets actual questions
 		var options = questions[current_question]["options"].keys()
 		var buttons = [button_choice_one, button_choice_two, button_choice_three, button_choice_four]
 		
-		# Actualiza los textos de los botones con las opciones
+		# updates buttons with new text
 		for i in range(buttons.size()):
 			if i < options.size():
 				var button_label = buttons[i].get_node("Label")
@@ -60,7 +55,7 @@ func load_question():
 	else:
 		finalize_quiz()
 
-# Maneja la selección de una opción
+# MMannages the selection of a button
 func _on_button_selected(button):
 	var option_text = button.get_meta("option_text")
 	var score = questions[current_question]["options"][option_text]
@@ -70,7 +65,7 @@ func _on_button_selected(button):
 	await transition_animation.animation_finished
 	load_question()
 
-# Maneja los botones conectados
+# Buttons conection
 func _on_button_choice_one_pressed():
 	_on_button_selected(button_choice_one)
 
@@ -83,7 +78,7 @@ func _on_button_choice_three_pressed():
 func _on_button_choice_four_pressed():
 	_on_button_selected(button_choice_four)
 
-# Finaliza el cuestionario
+# Ends quiz
 func finalize_quiz():
 	question_label.text = "Chapter created!"
 	button_choice_one.visible = false

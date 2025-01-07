@@ -1,12 +1,11 @@
 extends CharacterBody2D
 
-# Se asume que estos son los nodos de posición hijos del nodo `Move_Points`
 var move_points = []
 var current_index = 0
 var forward = true
 
 func _ready():
-	# Guarda las posiciones en una lista al cargar la escena
+	# Stores positions
 	move_points.append($"../Pos_1".position)
 	move_points.append($"../Pos_2".position)
 	move_points.append($"../Pos_3".position)
