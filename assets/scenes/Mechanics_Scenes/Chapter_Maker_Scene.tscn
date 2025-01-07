@@ -18,7 +18,7 @@ shader_parameter/blur = 0.0
 
 [sub_resource type="Animation" id="Animation_bm2tj"]
 resource_name = "Enter_N_Go"
-length = 0.5
+length = 0.2333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -26,7 +26,7 @@ tracks/0/path = NodePath("TextureRect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.2333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(160, -693), Vector2(160, 64)]
@@ -38,7 +38,7 @@ tracks/1/path = NodePath("Question_holder:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.2333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(418, 1321), Vector2(418, 542)]
@@ -66,10 +66,10 @@ tracks/1/path = NodePath("TextureRect:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.133333, 0.233333, 0.5),
+"times": PackedFloat32Array(0.133333, 0.3, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(158, 64), Vector2(171, 64), Vector2(-1745, 64)]
+"values": [Vector2(160, 64), Vector2(160, 79), Vector2(160, 905)]
 }
 
 [sub_resource type="Animation" id="Animation_4rlna"]
