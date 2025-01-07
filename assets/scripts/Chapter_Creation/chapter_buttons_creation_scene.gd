@@ -98,4 +98,4 @@ func finalize_quiz():
 func _on_finish_manga_btn_pressed():
 	$"../Transitions_Panels".play_backwards("CH_Maker_Enter")
 	GlobalData.G_Chap_Wrote = GlobalData.G_Chap_Wrote  + 1
-	transition_animation.play_backwards("Finish")
+	#transition_animation.play_backwards("Finish")

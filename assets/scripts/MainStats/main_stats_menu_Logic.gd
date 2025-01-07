@@ -31,7 +31,7 @@ extends Node2D
 var good_critiques = 0
 var bad_critiques = 0
 
-#Asignar nombres
+# Asignar nombres
 @onready var MangaNamer = $Manga_Name/ColorRect/LineEdit
 
 
@@ -78,7 +78,7 @@ func generate_criticism():
 		# Añade el objeto al contenedor de críticas (critics_holder)
 		if critics_holder:
 			critics_holder.add_child(new_critic)
-			GlobalData.G_N_Critics = GlobalData.G_N_Critics + 1
+			GlobalData.G_N_Critics += 1
 			
 			# Determinar si la crítica es positiva o negativa
 			if likes_higher and GlobalData.G_FinalScore >= random_threshold:
@@ -92,7 +92,6 @@ func generate_criticism():
 			if critics_holder.get_child_count() > 5:
 				critics_holder.get_child(0).queue_free()
 			
-			$UI/NCritics.text = "Critics: " + str(GlobalData.G_N_Critics)
 			update_status()
 			print("Crítico generado y añadido al contenedor de críticas.")
 		else:
@@ -137,32 +136,31 @@ func calculate_virality() -> String:
 	else:
 		return "Virality: [shake rate=10.0 level=5 connected=1]{None}[/shake]"
 
-func adjust_balance(amount: int):
-	GlobalData.G_Balance += amount
-	balance.text = "Balance: " + str(GlobalData.G_Balance) + "$"
+func adjust_balance(amount: int) -> bool:
+	# Verifica si hay suficiente balance antes de realizar la operación
+	if GlobalData.G_Balance + amount >= 0:
+		GlobalData.G_Balance += amount
+		balance.text = "Balance: " + str(GlobalData.G_Balance) + "$"
+		return true
+	else:
+		return false
 
 # Función para manejar el botón de creación de capítulos
 func _on_create_chapter_button_pressed():
-	if GlobalData.G_Balance >= 250:
-		adjust_balance(-250)
+	if adjust_balance(-250):  # Intenta restar 250
 		GlobalData.G_Chap_Wrote += 1
 		chapters_wrote.text = "Chapters wrote: " + str(GlobalData.G_Chap_Wrote)
 		$Chap_Viewer.visible = true
-		#transitions_panels.play("CH_Maker_Enter")
-		#ChapterMakerPanel.initialize_quiz()
+		print("Capítulo creado con éxito.")
 	else:
 		transitions_panels.play("Money_Flash")
 		print("No tienes suficiente balance para crear un capítulo.")
 
+# Función para manejar el botón de creación de personajes
 func _on_create_character_button_pressed():
-	if GlobalData.G_Balance >= 150:
-		adjust_balance(-150)
+	if adjust_balance(-150):  # Intenta restar 150
 		$Char_Viewer.visible = true
-		# Inicializa los minijuegos
-		if minigames_node and minigames_node.has_method("initialize_minigames"):
-			minigames_node.initialize_minigames()
-		else:
-			print("Error: Nodo de minijuegos no encontrado o no tiene el método 'initialize_minigames'.")
+		print("Personaje creado con éxito.")
 	else:
 		transitions_panels.play("Money_Flash")
 		print("No tienes suficiente balance para crear un personaje.")
