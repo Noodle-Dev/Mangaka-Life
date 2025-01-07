@@ -225,8 +225,13 @@ var G_question_types = {
 	]
 };
 
-
+func update_balance(balance_node: RichTextLabel):
+	if balance_node and balance_node is RichTextLabel:
+		balance_node.text = "Balance: " + str(GlobalData.G_Balance) + "$"
 #Save chapters from global scope
+"""
+USED FOR TESTING PURPOSES 
+
 func save_chapters_to_config_file(names_list: Node, file_path: String) -> void:
 	var config_file = ConfigFile.new()
 	var chapter_names: Array[String] = []
@@ -255,3 +260,4 @@ func load_chapters_from_config_file(names_list: Node, names_Obj: PackedScene, fi
 		new_name_instance.text = name
 		names_list.add_child(new_name_instance)	
 	print("Capítulos cargados exitosamente desde:", file_path)
+"""

@@ -43,6 +43,7 @@ func _ready():
 
 func _process(delta):
 	update_status()
+	balance.text = "Balance: " + str(GlobalData.G_Balance) + "$"
 
 # Resetea y configura el temporizador con un intervalo aleatorio
 func reset_criticism_timer():
@@ -159,10 +160,10 @@ func _on_create_character_button_pressed():
 		adjust_balance(-150)
 		$Char_Viewer.visible = true
 		# Inicializa los minijuegos
-		if minigames_node and minigames_node.has_method("initialize_minigames"):
-			minigames_node.initialize_minigames()
-		else:
-			print("Error: Nodo de minijuegos no encontrado o no tiene el método 'initialize_minigames'.")
+		#if minigames_node and minigames_node.has_method("initialize_minigames"):
+		#	minigames_node.initialize_minigames()
+		#else:
+		#	print("Error: Nodo de minijuegos no encontrado o no tiene el método 'initialize_minigames'.")
 	else:
 		transitions_panels.play("Money_Flash")
 		print("No tienes suficiente balance para crear un personaje.")

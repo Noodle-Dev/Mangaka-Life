@@ -61,6 +61,7 @@ func assign_random_opinion():
 		if is_good:
 			opinion_text = good_opinions[randi() % good_opinions.size()]
 		else:
+			GlobalData.G_FinalScore -= randi() % 101 + 100
 			opinion_text = bad_opinions[randi() % bad_opinions.size()]
 
 		user_opinion.add_text(opinion_text)
@@ -70,6 +71,7 @@ func assign_random_opinion():
 		if is_good and randf() < 0.5:  # 50% de probabilidad
 			var bonus = randi() % 101 + 100  # Número aleatorio entre 50 y 100
 			GlobalData.G_Balance += bonus
+			GlobalData.G_FinalScore += bonus
 			print("Se ha añadido ", bonus, " al balance global. Nuevo balance: ", GlobalData.G_Balance)
 	else:
 		print("Error: 'user_opinion' es null. No se pudo asignar una opinión.")

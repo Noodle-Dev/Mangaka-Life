@@ -18,6 +18,8 @@ func _on_appear_panel_quest_pressed():
 	print("New chapter added: ", chapter_namer.text)
 	$"../Transitions_Panels".play("CH_Maker_Enter")
 	$"../Chapter_Maker".initialize_quiz()
+	await $"../Transitions_Panels".animation_finished
+	
 	$Control/Chapter_NameCreation.visible = false
 	self.visible = false
 	# SAVE TO CONFIG FILE UNCOMMENT WHEN RELEASE
